@@ -1,0 +1,77 @@
+--------------------------GIT-------------------Interview Questions
+1. what is GIt?
+2. In Git how do you revert a commit that has already been pushed and made public?
+3. how do you find a list of files that has changed in a particular commit. ?
+4. what is meant by continious intergration ?
+------------------------Jenkins---------------
+1. what is Jenkins.
+2. how will secure jenkins setup?
+3. Explain how can you create a backup and copy files in Jenkins?
+-----------------Nagios-------------------
+1.what is nagios.?
+2. how does nagios work.?
+3. what is NRPE in nagios?
+-------------------docker-----------------
+1. what is docker ?
+2. what is docker images?
+3. what is dockerfile?
+4. write a dockerfile to create an image to install apache.?
+--------------------AWS---------------------
+1. what is VPC.
+2. what is public and private VPC.
+3. what is reserved instances?
+4. what is cloud formation?
+5. what is lambda?
+6. have you used Route 53?
+7. what is the best feature of AWS?
+8. what is difference between chef and ansible?
+9. what is dedicated instance ?
+10. what is spot intances?
+11. how do you choose avialbility zone ?
+12. what are the service models AWS provides ?
+13. how can you setup Weighted policy in route53.
+14. what is the relation between ec2 and AMI. ?
+15. what is dynamo DB , how it diffrs from RDS.?
+------------------------------------------------------General Question--------------------------------------
+1. whey we need devops.?
+2. what are the popular devops tools that you use?
+3. what is the typical DevOps Workflow you use in your organistaion.?
+4. How do you take devOps approach with Amazon web Services?
+5. How will you run a script automatically on commit in GIT?
+6. How does CloudFormation work in AWS?
+7. What is CICD in Devops?
+8. what are the best practices of CI?
+9. what are the beniffts of CI?
+10. what are the options for security in jenkins?
+--------------------------------------------------Ansible-------------------------------
+11. what are the main beniftes of ansible.?
+12. what is the architecure of ansible.?
+13. what is a playbook in ansible?
+14. what are the main benifts of anisble.?
+15. what are the main use cases of ansible?
+----------------------------------------------------------------------------------------
+16. what is docker hub?
+17. what is Multi factor authentication.?
+18. what are the main beniftes of nagios ?
+19. what are the main features of nagios?
+20. what is the use of kubernetes?
+21. what is the architecure of Kubernetes?
+22. How does kubernetes provide high availability of applications in a cluster.
+23. what is soruce code management .?
+24. what are the main services of AWS  that you have used?
+25. why GIt is considered better than CVS for version control system?
+26. what is the difference between a container and a virtual machine?
+27.What are the main principles of DevOps?
+28.Are you more Dev or more Ops?
+29.What is a REST service?
+30.How do you apply DevOps principles to make system Secure?
+31.What is Self-testing Code?
+32.What is a Deployment Pipeline?
+33.What are the main features of Docker Hub?
+34.What are the security benefits of using Container based system?
+35.How many heads can you create in a GIT repository?
+36.What is a Passive check in Nagios?
+37.What is a Docker container?
+38.How will you remove an image from Docker?
+39.What are the common use cases of Docker?
+40.Can we lose our data when a Docker Container exits?
