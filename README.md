@@ -2,7 +2,7 @@
                                         
                                         updated Interview questions 
 
-please share your question i will make clear your doubts
+please share your question i will make clear your doubts.
 
 1.Jenkins Pipeline script Doubt:
 
