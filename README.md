@@ -2,7 +2,7 @@
                                         
                                         updated Interview questions 
 
-please share your question i will make clear your doubts
+please share your question i will make clear your doubts..
 
 Doubt in Jenkins Pipeline : 
 How to write the shell script command to deploy or move the any builld war file to destination folder.
