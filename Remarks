@@ -19,3 +19,25 @@ sudo systemctl restart docker
 
 
 https://docs.ansible.com/ansible/modules_by_category.html
+
+
+
+*************JENKINS SLAVE***************
+
+sudo yum -y install git java-1.8.0-openjdk
+sudo useradd -d /var/lib/jenkins jenkins
+ssh-keygen
+cat /home/user/.ssh/id_rsa.pub
+sudo mkdir /var/lib/jenkins/.ssh
+sudo vi /var/lib/jenkins/.ssh/authorized_keys
+sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
+cat /home/user/.ssh/id_rsa  //copy this key 
+
+go to Jenis // Manage Jenkins // Manage Nodes // new node// node name / select permanent Agent/ ok
+Remote root directory - /var/lib/jenkins
+Launch method - Launch slave agents via SSH
+Host - slave system IP
+credentials - add - kind - SSH Usename with Private Key.
+username jenkins
+privatekey- past the id_rsa key // save
+Host key verication - Manually trusted key verication strategy
