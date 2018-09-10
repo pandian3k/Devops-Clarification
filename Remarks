@@ -1,7 +1,5 @@
-13.228.27.232	172.31.26.245	hari03043.mylabserver.com | 
-
-	54.169.52.219	172.31.20.103	hari03046.mylabserver.com | 
-
+13.250.33.3	172.31.24.72
+54.169.6.25	172.31.31.15
 
 sudo yum -y install docker
 sudo systemctl start docker
