@@ -1,0 +1,346 @@
+IAM // Identity & Access Management is where you manage your AWS users and their access to AWS accounts and services.
+the common use of IAM is to manage:
+	users
+	groups
+	IAM Access Policies
+	Roles
+by default, the root user has full administrative rights and access to every part of the account.
+by default, any new users create in AWS account are created with NO access to any AWS services ( except the ablity to login)
+for all users (besides the root user) permissions must be given that grant access to AWS services. 
+	
+	IAM Initial configuration;
+	
+AWS best practices: Guidelines that recommend settings, configurations and architecture for the purpose of having a high level of security, accessibility and efficiency
+
+when a new AWS root account is created it is best practice to compliete the tasks listed in IAM under "sevcurity Staus"
+
+Those tasks include:
+	Delete your root access keys
+	Activate MFA on your root account
+	create individual IAM users
+	user group to assign permissions
+	apply an IAM password policy
+
+	What is MFA?
+	Multi-Factor Authentication, it is an additional layer of security on your root account that is provided by a 3rd party, and it takes the form of a continually-changing, random six digit code.
+
+create individual IAM users:-
+
+AWS best practice is to Never use your root access for day to day use.
+If you want full admin access for yourself create an IAM user and attach the 'AdministratorAccess" policy to it.
+Then use that account as your daily driver.
+
+user group to assign permissions:-
+	it can often be more convenient and efficient to setup groups and assign permissions to the group rather than manage each user individually.
+
+apply an IAM password policy:-
+	A password policy dictates the format and expiration rules that must be followed when a user creates or modifies their password.
+	These rules include :- 
+		Length
+		case requirements
+		Number requiredments
+		Non-alphanumeric requirements
+		password expirationpassword reuse
+		user rights to change the own password
+		Administrator reset requirements
+		
+VPC // 	Virtual Private Cloud
+AWS Availability Zones:
+Geographically isolated zones within a region that house AWS resources
+accessibility zones(AZs) are where seprate physical AWS data centers are located.
+multiple AZs in each region provide resundancy for AWS resources in that reagion.
+
+what is a VPC?
+	A private sub-section of AWS that you control in which you can place AWS resources (such as EC2 instances and Data bases) have full control over who has access to the AWS resources that you place inside your VPC.
+
+Amazon VPC lets you provision a logically isolated section of the AWS cloud where you can launch AWS resources in a virtual network that you define. you have complete control over your virtual networking environment, including selection of your own IP address range, creation of subnets and configuration of route tables and network gatewys.
+
+Note: when you create an AWS account , a default VPC is created for you. Including the Standard components that are needed make it functional.
+	Internet Gateway
+	A route tanle (with predified routes to the default subnets)
+	A network Access control lIst(with predefired rules for access)
+	subnets to provison AWS resources in (such as EC2 intances).
+
+what is an IGW?
+A combination of hardware and software that provides your private network with a route to the world outside9meaning internet) of the VPC.
+	Internet Gateway is a horizontally scaled, redundant and high available VPC components that allows communication between instances in your VPC and the internet. it therefore imposes no availability risks or bandwidth constraints on your network traffic.
+Note:-
+		your edfault VPC already has an IGW attached.
+routables rules and details you need to know:
+	only 1 IGW can be attached to vpc at the time
+	An IGW cannot be detatched from VPC while there are active AWS resources in the VPC(such as an EC2 instance or RDS Database)
+
+What is a Route Table?	
+A route table contains a set of rules called routes that are used to determine where network traffic is directed.
+
+Note: - your default VPC already has a main route table.
+Route table rules and details you need to know:
+	unlike an IGW, you can have multiple active route tables in a VPC
+	you cannot delete a route table if it has dependancies (associated subnets)
+	
+What is a NACL?
+Network Access Control List is an optional layer of security for your VPC that act as a firewall for controlling trafic in and out of one or more subnets.	
+ 
+	Note:- ypur default VPC already has an NACL in place and associated with the default subnets.
+		
+		Rules are evaluated from lowest to highest based on "rule#"
+		the first rule found that applies to the traffic type is immediatly applied, regardless of any rule that come after it (have a higher "rule#"0
+		The  default NACL allows all traffic to the default subnets.
+		any new NACLs you create Deny all traffic by default.
+		A subnets can only be associated with one NACL as a timeAn NACL allows or denies traffic from entering a subnet, Once inside the subnet other AWS resources.(EC2 Instances) may have an additional layer of (security group).
+		
+		
+What is a Subnet?		
+A subnet, short for subnetwork, is a sub-section of a network. Generally a subnet includes all the computers in a specific location. Cricling back to the home netwok anology we used in the VPC Basics lesson, if you think about your ISP being a network then your home netwok can be considered a subnet of your ISP network.
+
+When you create a VPC, it spans all of the Availability Zones in the Region. Ater creating a VPC, you can add one or more subnets in each Availability zone. Each subnet mustreside entirely within one availability zone and cannot span zones.
+
+Note:- Your Default VPC already has subnet created by default
+	Subnet rules and details you nee to know
+		Subnets Must be associated with a route table
+		A PUBLIC subnet HAS a route to the internet
+		A PRIVATE subnet does not have a route to the internet.
+		A subnet is located in ONE specific Availabilty Zone.
+		
+Availability Zones:-
+	High Availability:
+			creating your architecture in such a way that your system is alway available (or has the least amout of downtime as possible)
+	what High Availability "sound"like:
+			I can always access my data in the cloud
+			My website never crashes and is always availability to my customers
+	Fault Tolerant:
+			The ability of your system to withstand failures in one (or more) of its components and still remain availabile.
+	what Fault Tolerant"sound" like.
+			one of my web servers failed, but my backup server immediatly took over.
+			ifsometing in my systemfails, it canrepair itself.
+
+Availability Zone and VPCs:
+	any AWS resource that you launch (like EC2/RDs) must be placed in a VPC subnet. Any given subnet must be located in an AvailabilityZone. ou can (and sound) utilize multiple Availabilty and Fault Tolerant systems.
+AWS Definition/Explanation:
+	when you create a VPC, it spans all of the Availability Zones in the region. Ater Creating a VPC, you can add one or more subnets in each AvailabilityZone. Each subnet must reside entirely within one Availablity zone and cannot span zones.
+
+	AvailabilityZones are distinct locations that are engineered to be isolated from failures in other Availability zones. by laching instances in seprate Availabilty zones you can protect your applications from the failure of a single location.
+	
+Note:-  your default VPC already has a subnet created by default.
+
+
+S3 //		Simple Storage Service
+
+what is S3:-
+An online, bulk storage service that you can access from almost any device.
+	Amazon S3 has a simple web services interface that you can use to store and retrieve any amount of dat, at any time, from anyware on the web. It gives any users access to the same highly scalable, reliable, fast, inexpensive data storage infrastructure that Amazon uses to run its own global network of web sites. The service aims to maximize benefits of scale and to pass those benefits on to users.
+ 
+S3 Basics:  Components and structure
+
+BASICS:
+	S3= Simple Storage Service
+	It is AWS's primary storage service.
+	You can store any type of file in S3
+	
+Buckets:
+	Root level "Folders" you create in S3 are referred to as buckets.
+	Any subfolders you create in a bucket is referred to as a folder
+	
+Objects:
+	Files stored in a bucket are referred to as objects.
+	
+Regions:
+	When you create a bucket, you must select a specific region for it to exist. This mean that any data you upload to the S3 bucket will be physically located in a data center in that reagion.
+	Best practice is to select the region that is physically closest to you, to reduce transfer latency.
+						(or)
+	if you are serving files to a custome based in a certain area of the world, create the bucket in a reagion closes to your coustomers (to reduce latency for your coustmers)
+
+Buckets and Folders:
+
+Ceating an S3 Buckets:
+	Choose a bucket name:
+		Bucket name must follow a set of rules:
+		 Bucket name must be unique across ALL of AWS.
+		 Bucket names must be 3 to 63 characters in length.
+		 Bucket names can only contain lowercase letters, numbers and hyphens.
+		 Bucket names must not be formatted as an IP address
+	Select a Reagion:
+	
+	Uploading (Important) an object to a Bucket;
+		  Navigate into a bucket
+		  Under Actions select upload
+		  Select a file to upload
+		  click start upload
+	Creating a Folder in a Bucket:
+		  Navigate into a bucket
+		  Click on Creat Folder
+		  Give the folder a name
+		  
+BUckets, Folders & Object Properties:
+		Bucket Level Properties;
+			General Info
+			Permissions
+			Static Web Hosting
+			Logging
+			Events
+			Versioning
+			Lifecycle
+			Cross-Region Replication
+			Tags
+			Requester Pays
+			Transfer Acceleration
+		Folder Level Properties:
+			General Info
+			Details
+		Object Level Properties:
+			General Info	
+			Details
+			Permissions
+			MetaData
+		
+What is a storage class?
+	A storage class represents the classification assigned to each object in S3
+		Availbile storage classes include:
+		Standard
+		Reduced Redundancy Storage (RRS)
+		Infrequent Access(S3-IA)
+		Glacier
+	Each Storage Class has varying attributes that dicate things like:
+		Storage cost
+		Object availability
+		object durability
+		Frequency of access(to the object)
+	Each object must be assigned a storage class("Standard is the default class)
+	you can change the storage class of an object at any time (for the most part)
+	
+S3 Storage Classes:
+	Standard:
+		Designed for general, all-purpose storage
+		is the default storage option
+		99.999999999% Object durability(eleven nines)
+		99.99% object availability
+		is the most expensive storage class
+	Reduced Redundancy Storage (RRS)
+		Designed for non-critical, reproducible objects.
+		99.99% object durability
+		99.99% object availability
+		Is less expensive than the standard storage class.
+	Infrequent Access(S3-IA)
+		Designed for objects that you do not access frequently, but must be immediately available when accessed.
+		99.999999999% Object durability(eleven nines)
+		99.90% object availability
+		Is less expensive than the standard/RRS storage class.
+	Glacier:
+		Designed for log-term archival storage.
+		May take several hours for objects stored in glacier to be retrived.
+		99.999999999% Object durability
+		is the cheapest S3 storage class(very low cost)
+
+https://aws.amazon.com/s3/pricing/
+
+		Object Durability is the percent(%) over a one year time period that a file stored in S3 will Not Be lost.
+	For object durability of 99.999999999%(11 nines) that means there is a 0.000000001% chance of a file in S3 being lost in a year.
+								(OR)
+	if you have 10,000 files stored in S3 (@11 nines durability), then you can expect to lose one file 10 million years.
+	
+		Object Availability is the percent(%) over a one year time period that a file stored in S3 Will be accessable. 
+	For object availability of 99.99% that means there is a 0.01% chance that you wont be able to access a file sored in S3 in a year.
+								(OR)
+	For every 10,000 hours, you can expect a total of one hour for which a file may not be availabile to access
+S3 Storage Classess:
+	Setting/Changing storage class:
+		by default, all new objects uploaded to S3 are set to the Standard storage class
+		If you want new objects to have a different storage class, then you need to set the proper setting prior to or during the upload process. you can do this by either.
+			Selecting another storage class during the upload process(set details)
+			using object lifecycle policies
+	For the following storage classes:
+		standard
+		Reduced redundancy Storage (RRS)
+		Infequent Access(S3-IA)
+		you can manually switch the object storage class amoungts them(at any time) by changing the storage class in the objects properties.
+	To move an object to the Glacier Storage Class:
+		you need to use object lifecycles.
+		the changes to Glacier may take 1-2 days to take effect.
+What is an object lifecycle?
+	An object lifecycle is a set of rules that automate the migration of an objects storage class to a different storage class (or deletion), based on specified time intervals.
+For example:-
+i have a work file that i am going to access eveyday for next 30 days
+after 30 days, i may only need to access that file once a week for the 60 nex days.
+after which (90 days total) i will probably never access the filw again but want to keep it just in case.
+
+by using a lifecycle policy, i can automate the pocess of chaging rh file storage class to meet my usage needs and keep my S3 storage cost as low a possible.
+
+The scenario:
+i have a work file that i am going to access eveyday for next 30 days
+after 30 days, i may only need to access that file once a week for the 60 nex days.
+after which (90 days total) i will probably never access the filw again but want to keep it just in case.
+
+what is the best solutation to meet the usage needs and minimize storage cost?
+
+The solutation:
+Days 0-29 (30days)
+usage needs = very frequently
+Best fit Storage Class= Standard
+Cost=highest cost tier
+
+Days 30-89 (60days)
+usage needs = infrequently
+Best fit Storage Class= Infrequent Access
+Cost=Middle cost tier
+
+Days 90+
+usage needs = Most likely never needed
+Best fit Storage Class= Glacier
+Cost=lowest cost tier
+
+
+Object Lifecycle:  // Lifecycle Management
+
+lifecycles functionality is located on the bucket level.
+however, a lifecycle policy can be applied to:
+	the entire bucket (applied all the objects in the bucket)
+	One specific folder with a bucket(applied to all the objects in that folder).
+	One Specific object within a bucket
+you can always delete a lifecycle policy or manually change the storage class back to whatever you like.
+
+
+S3 Permissions:
+
+what are S3 Permissions?
+	S3 permissions are what allow you to have granular control over who can view access and use specific buckets and objects.
+	
+	Permissions fuctionality can be found on the bucket And object level
+	on the bucket level you can control(for each bucket individually)
+		List:who can see the bucket name
+		upload/Delete:Objects to (upload) or in the bucket (delete)
+		View permissions
+		Edit permissions: Add/edit/delete permissions
+NOTE:Bucket level permission are generally used for internal access control
+	on the object level, you can control:(for each object individually)
+	open/Download
+	View permissions
+	Edit permissions
+Note: you can share specific objects (via a link) with the anyone in the world.
+
+S3 Permissions:
+Sharing an S3 object with the world:
+	on the object, create the following permission:
+		Grantee=Everyone
+		"Check" Open/Download
+	under Actions, select"make Public"
+	The Link under Properties is now live and anyone that has it can directly download the Object.
+	Note: to remove public access to the object, either delete the permission
+what is S3 Versioning?
+	S3 versioning is a feature that keeps track of and stores all old/new versions of an objects so that you can access and use an older version if you like.
+	
+		versioning is either ON or OFF
+		Once it is turned ON, you can only "suspend" versioning. It cannot be fully turned OFF.
+		Suspending Versioning Only prevents versioning going forward. All previous objects with versions will still maintain thier older versions.
+		versioning can only be set on the bucket level and applies to ALL objects in the bucket
+
+
+
+EC2 = Elastic Compute Cloud  //Think of EC2 as your basic desktop computer.
+Amazon Elastic Compute Cloud provides scalable computing capacity in the Amazon webservices cloud. using amazon EC2 eliminates your need to inverst in hardware up front, so you can develop applications faster. you can use amazon EC2 to launch as many or as few virtual servers as you need. Configure security and networking and manage storage. Amazon EC2 enables you to scale up or down to handle changes in requirements or spikes in propularity, reducing your need for forecaast traffic.
+
+
+
+
+
+
+
