@@ -1,5 +1,5 @@
-34.221.162.250	172.31.120.74
-35.162.29.142	172.31.103.5
+34.221.162.250	172.31.120.74 pandian0031.mylabserver.com 
+35.162.29.142	172.31.103.5    pandian0032.mylabserver.com 
 
 sudo yum -y install docker
 sudo systemctl start docker
