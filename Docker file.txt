@@ -1,0 +1,67 @@
+# This is Dockerfile first batch
+FROM centos:6
+
+LABEL maintainer="SLA"
+
+RUN yum update -y && yum install -y httpd net-tools
+RUN mkdir -p /run/httpd
+RUN rm -rf /run/http/* /tmp/httpd/*
+
+CMD echo "Remember to check your container IP Address"
+
+ENV ENVIROMENT="devops batch"
+
+EXPOSE 80
+
+ENTRYPOINT apachectl ".DFOREGROUND"
+
+:wq
+
+**************************************************
+docker build -t devopsclass:v3
+
+docker run -d --name web1 --rm devopsclass:v3
+
+docker ps
+
+docker run -d --rm --name testweb1 devopsclass:v3
+********************************************************
+
+# This is Dockerfile batch
+ARG TAGVERSION=6
+FROM centos:${TAGVERSION}
+
+LABEL maintainer="SLA"
+
+RUN yum update -y && \
+    yum install -y httpd net-tools && \
+    mkdir -p /run/httpd && \
+    rm -rf /run/http/* /tmp/httpd/*
+	
+COPY index.html /var/www/html/
+
+ENV ENVIROMENT="devops batch"
+
+VOLUME /mymount
+
+EXPOSE 80
+
+ENTRYPOINT ls -al / | wc -l
+
+:wq
+
+echo "This is our Docker Image HTML index file" > index.html
+
+docker build -t mybuild:v4 .
+
+docker run mybuild:v4
+*************************************************
+docker ps -a --no-trunc
+
+docker image history mybuild:v4
+
+cd /var/lib/docker
+******************************************************
+docker export loving_morse > mybuild4.tar 
+
+docker import mybuild4.tar mybuild:importv5
