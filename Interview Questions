@@ -3,6 +3,10 @@
 2. In Git how do you revert a commit that has already been pushed and made public?
 3. how do you find a list of files that has changed in a particular commit. ?
 4. what is meant by continious intergration ?
+5. what is git  staging ?
+6 .difference between git merge and fetch ?
+7. whats is git architecture ?
+
 ------------------------Jenkins---------------
 1. what is Jenkins.
 2. how will secure jenkins setup?
