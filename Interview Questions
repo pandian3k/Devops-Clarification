@@ -1,152 +1,0 @@
---------------------------GIT-------------------Interview Questions
-1. what is GIt?
-2. In Git how do you revert a commit that has already been pushed and made public?
-3. how do you find a list of files that has changed in a particular commit. ?
-4. what is meant by continious intergration ?
-5. what is git  staging ?
-6 .difference between git merge and fetch ?
-7. whats is git architecture ?
-
-------------------------Jenkins---------------
-1. what is Jenkins.
-2. how will secure jenkins setup?
-3. Explain how can you create a backup and copy files in Jenkins?
------------------Nagios-------------------
-1.what is nagios.?
-2. how does nagios work.?
-3. what is NRPE in nagios?
--------------------docker-----------------
-1. what is docker ?
-2. what is docker images?
-3. what is dockerfile?
-4. write a dockerfile to create an image to install apache.?
---------------------AWS---------------------
-1. what is VPC.
-2. what is public and private VPC.
-3. what is reserved instances?
-4. what is cloud formation?
-5. what is lambda?
-6. have you used Route 53?
-7. what is the best feature of AWS?
-8. what is difference between chef and ansible?
-9. what is dedicated instance ?
-10. what is spot intances?
-11. how do you choose avialbility zone ?
-12. what are the service models AWS provides ?
-13. how can you setup Weighted policy in route53.
-14. what is the relation between ec2 and AMI. ?
-15. what is dynamo DB , how it diffrs from RDS.?
-------------------------------------------------------General Question--------------------------------------
-1. whey we need devops.?
-2. what are the popular devops tools that you use?
-3. what is the typical DevOps Workflow you use in your organistaion.?
-4. How do you take devOps approach with Amazon web Services?
-5. How will you run a script automatically on commit in GIT?
-6. How does CloudFormation work in AWS?
-7. What is CICD in Devops?
-8. what are the best practices of CI?
-9. what are the beniffts of CI?
-10. what are the options for security in jenkins?
---------------------------------------------------Ansible-------------------------------
-11. what are the main beniftes of ansible.?
-12. what is the architecure of ansible.?
-13. what is a playbook in ansible?
-14. what are the main benifts of anisble.?
-15. what are the main use cases of ansible?
-----------------------------------------------------------------------------------------
-16. what is docker hub?
-17. what is Multi factor authentication.?
-18. what are the main beniftes of nagios ?
-19. what are the main features of nagios?
-20. what is the use of kubernetes?
-21. what is the architecure of Kubernetes?
-22. How does kubernetes provide high availability of applications in a cluster.
-23. what is soruce code management .?
-24. what are the main services of AWS  that you have used?
-25. why GIt is considered better than CVS for version control system?
-26. what is the difference between a container and a virtual machine?
-27.What are the main principles of DevOps?
-28.Are you more Dev or more Ops?
-29.What is a REST service?
-30.How do you apply DevOps principles to make system Secure?
-31.What is Self-testing Code?
-32.What is a Deployment Pipeline?
-33.What are the main features of Docker Hub?
-34.What are the security benefits of using Container based system?
-35.How many heads can you create in a GIT repository?
-36.What is a Passive check in Nagios?
-37.What is a Docker container?
-38.How will you remove an image from Docker?
-39.What are the common use cases of Docker?
-40.Can we lose our data when a Docker Container exits?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1. What is SCM?
-	Source control (or version control) is the practice of tracking and managing changes to code. Source control management (SCM) systems provide a running history of code development and help to resolve conflicts when merging contributions from multiple sources.
-
-2. List Of SCM Tools?	
-1.Local data model	Open source:		Revision Control System (RCS) – stores the latest version and backward deltas for fastest access to the trunk tip compared to SCCS and an improved user interface, at the cost of slow branch tip access and missing support for included/excluded deltas.		Source Code Control System (SCCS) – part of UNIX; based on interleaved deltas, can construct versions as arbitrary sets of revisions. Extracting an arbitrary version takes essentially the same time and is thus more useful in environments that rely heavily on branching and merging with multiple "current" and identical versions.
-2.Client-server model:	Open Source:> Concurrent Versions System (CVS) – originally built on RCS, licensed under the GPL.> CVSNT – cross-platform port of CVS that allows case insensitive file names among other changes> OpenCVS – CVS clone under the BSD license, with emphasis put on security and source code correctness> Subversion (SVN) – versioning control system inspired by CVS> Vesta – build system with a versioning file system and support for distributed repositories
-	Proprietary> AccuRev – source configuration management tool with integrated issue tracking based on "Streams" that efficiently manages parallel and global development; replication server is also available. Now owned by Micro Focus.> Autodesk Vault – Version control tool specifically designed for Autodesk applications managing the complex relationships between design files such as AutoCAD and Autodesk Inventor.> CADES - Designer productivity and version control system by International Computers Limited.> Dimensions CM - software change and configuration management system          developed by Micro Focus, formerly Serena Software, that includes revision control.> Helix Core, formerly Perforce Helix - for large scale development environments> IBM Configuration Management Version Control (CMVC) – version control system, no longer available.> IBM Rational ClearCase – SCC compliant configuration management system by IBM Rational Software> IBM Rational Synergy – SCC compliant integrated change management and task-based configuration management system, proprietary of IBM.> IBM Rational Team Concert – Collaboration and application lifecycle management platform by IBM Rational Software> IC Manage Global Design Platform (GDP) – design data management for IC design and Perforce infrastructure support.> Panvalet - Around since the 1970s, source and object control for IBM mainframe computers.> PTC Integrity (Formerly MKS Integrity).> PVCS – originally Polytron Version Control System, developed by Don           Kinzer at Polytron, first released in 1985. Now owned by Micro Focus.> Quma Version Control System> Razor (configuration management), integrated suite from Visible Systems> StarTeam – coordinates and manages software delivery process by Micro Focus, formerly Borland; centralized control of digital assets and activities> Surround SCM – version control tool by Seapine Software.> Team Foundation Server (TFS) - Development software by Microsoft which includes revision control.> TeamWork – version control tool by DBmaestro; oriented to DBMs> Vault – version control tool by SourceGear (First installation can be used for free)> Visual SourceSafe – version control tool by Microsoft; oriented toward small teams> Visual Studio Team Services (VSTS) - Services for teams to share code, track work, and ship software for any language by Microsoft
-3.Distributed model:	Open Source:> ArX – written by Walter Landry, started as a fork of GNU arch, but has been completely rewritten
-> Bazaar – written in Python, originally by Martin Pool and sponsored by Canonical; decentralised, and aims to be fast and easy to use; can losslessly import Arch archives
-> BitKeeper – was used in Linux kernel development (2002 – April 2005) until its license was revoked for breach of contract. It was open-sourced in 2016 in an attempt to broaden its appeal again.
-> Codeville – written in Python originally by Ross Cohen; uses an innovative merging algorithm
-> Darcs – written in Haskell and originally developed by David Roundy; can keep track of inter-patch dependencies and automatically rearrange and "cherry-pick" them using a "theory of patches"
-> DCVS – decentralized and CVS-based
-> Fossil – written by D. Richard Hipp for SQLite; distributed revision control, wiki, and bug-tracking (all-in-one solution) with console and web interfaces. Single portable executable and single repository file
-> Git – written in a collection of Perl, C, and various shell scripts, designed by Linus Torvalds based on the needs of the Linux kernel project; decentralized, and aims to be fast, flexible, and robust
-> Mercurial – written in Python as an Open Source replacement to BitKeeper; decentralized and aims to be fast, lightweight, portable, and easy to use
-> Monotone – developed by the Monotone Team; decentralized in a peer-to-peer way
-> SVK – written in Perl by Kao Chia-liang; built on top of Subversion to allow distributed commits
-> Veracity - Is another distributed version control system which includes bug tracking and Agile software development tools integrated with the version control features.
-> Veracity - Is another distributed version control system which includes bug tracking and Agile software development tools integrated with the version control features
-       
-       
-       
-       	Proprietary:
-> Code Co-op – peer-to-peer version control system (can use e-mail for synchronization)
-> Sun WorkShop TeamWare – designed[citation needed] by Larry McVoy, creator of BitKeeper
-> Plastic SCM – by Codice Software, Inc
-> Visual Studio Team Services - Services for teams to share code, track work, and ship software for any language by Microsoft		3. What is GIT?
-	Git is an open-source distributed source code management system. Git allows you to create a copy of your repository known as a branch. Using this branch, you can then work on your code independently from the stable version of your codebase. Once you are ready with your changes, you can store them as a set of differences, known as a commit. You can pull in commits from other contributors to your repository, push your commits to others, and merge your commits back into the main version of the repository
-
-4. What is Push, Pull, Merge, Ignore, Rebase and Tag?
- The git push command is used to upload local repository content to a remote repository. Pushing is how you transfer commits from your local repository to a remote repo
-	
-	The git pull command is used to fetch and download content from a remote repository and immediately update the local repository to match that content. The git pull command is actually a combination of two other commands, git fetch followed by git merge.
-
-	Git merge will combine multiple sequences of commits into one unified history. Git merge is used to combine two branches.
-	Git ignore is a  file which Git has been explicitly told to ignore.
-	Ignored files are usually build artifacts and machine generated files that can be derived from your repository source or should otherwise not be committed. Some common examples are:
-> dependency caches, such as the contents of /node_modulesor /packages
-> compiled code, such as .o, .pyc, and .class files
-> build output directories, such as /bin, /out, or /target
-> files generated at runtime, such as .log, .lock, or .tmp
-> hidden system files, such as .DS_Store or Thumbs.db
-> personal IDE config files, such as .idea/workspace.xml
-Ignored files are tracked in a special file named .gitignore that is checked in at the root of your repository. There is no explicit git ignore command: instead the .gitignore file must be edited and committed by hand when you have new files that you wish to ignore. .gitignore files contain patterns that are matched against file names in your repository to determine whether or not they should be ignored.
-
-Git Rebasing is the process of moving or combining a sequence of commits to a new base commit. Rebasing is most useful and easily visualized in the context of a feature branching workflow. 
-
-Git Tags are ref's that point to specific points in Git history. Tagging is generally used to capture a point in history that is used for a marked version release (i.e. v1.0.1). A tag is like a branch that doesn’t change. Unlike branches, tags, after being created, have no further history of commits
-
