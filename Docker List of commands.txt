@@ -27,3 +27,23 @@ docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
 
 dodocker inspect <container-id>
+
+docker run -d -P --name web
+docker port web
+docker-machine ip default
+docker stop web
+
+ cd $HOME
+ mkdir mysite
+ cd mysite/
+ echo "a new website" > index.html
+ docker run -d -P -v $HOME/mysite:/usr/share/nginx/html --name mysite nginx
+ docker port mysite
+ docker ps
+ docker inspect 3a90851c8359
+ elinks 172.31.18.20:32769
+
+
+
+docker images --no-trunc
+docker info
