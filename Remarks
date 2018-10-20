@@ -1,6 +1,4 @@
-54.255.186.36	172.31.18.106
-54.169.253.125	172.31.22.199	
-52.221.219.7	172.31.25.51
+13.250.6.221	172.31.24.128	pandian0033.mylabserver.com
 
 sudo yum -y install docker
 sudo systemctl start docker
