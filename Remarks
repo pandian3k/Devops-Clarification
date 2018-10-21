@@ -1,5 +1,5 @@
-52.221.222.226	172.31.16.106	pandian0032.mylabserver.com
-54.169.154.180	172.31.27.248	pandian0033.mylabserver.com
+	52.77.227.242	172.31.16.106	pandian0032.mylabserver.com | 
+  54.254.183.235	172.31.27.248	pandian0033.mylabserver.com
 
 
 sudo yum -y install docker
