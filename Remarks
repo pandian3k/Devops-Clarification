@@ -1,4 +1,6 @@
-13.229.153.226
+13.250.19.184
+54.255.169.184
+
 
 sudo yum -y install docker
 sudo systemctl start docker
