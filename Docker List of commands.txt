@@ -45,5 +45,7 @@ docker stop web
 
 
 
+docker history --no-trunc <Image ID>   // Then find the its layers and their sizes
+
 docker images --no-trunc
 docker info
