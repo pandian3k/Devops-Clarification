@@ -1,0 +1,4 @@
+git stash  // this stores the unfinished work in a stash, and clean the current branch from uncommited changes
+git stash apply
+git hist  --all
+git submodule add "git clone link"  // to clone git in to some other init file
