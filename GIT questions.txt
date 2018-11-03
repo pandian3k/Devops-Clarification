@@ -1,0 +1,18 @@
+What is GIT?
+ Difference between Git vs SVN
+git architecture
+.git architecture // localrepor
+ What Are The Advantages Of Using Git?
+ what is git stash?
+ What is Git fork? 
+What is difference between fork and branch? 
+How to create tag?
+git pusll and git fetch different?
+What is the function of ‘git reset’?
+What is a ‘conflict’ in git?
+How to revert previous commit in git?
+How to rebase master in git? 
+Difference between rebase and merge. 
+How to squash or fixup commits?
+Explain git stash, pop?
+Branching strategies Pros and Cons — Feature, Release branching, Git flow?
