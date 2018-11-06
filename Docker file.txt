@@ -53,8 +53,17 @@ ENTRYPOINT ls -al / | wc -l
 echo "This is our Docker Image HTML index file" > index.html
 
 docker build -t mybuild:v4 .
+*************************************************
+docker run mybuild:v4FROM node:carbon
+WORKDIR /usr/src/app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 8080
+CMD ["npm", "start"]
 
-docker run mybuild:v4
+
+
 *************************************************
 docker ps -a --no-trunc
 
