@@ -1,12 +1,15 @@
 git stash  // this stores the unfinished work in a stash, and clean the current branch from uncommited changes
-git stash apply
-git hist  --all
+git stash save "message"
+git stash list
+git stash apply stash@{0}
+git checkout --
+git stash pop
+git stash drop stash@{0}
+git list  --all
 git submodule add "git clone link"  // to clone git in to some other init file
 git tag v1.0
-git tag
 git push origin v1.0  // tag no(v1.0)
+git tag -d V1.0  // to remove the tag
 git fetch origin
 git checkout v1.0
-git tag -d V1.0  // to remove the tag
-
 
