@@ -1,5 +1,7 @@
-52.221.222.157
-54.254.189.153
+3.0.49.181
+cloud_user
+Devops@12345
+
 
 
 sudo yum -y install docker
