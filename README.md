@@ -13,3 +13,7 @@ from C:\Program Files (x86)\Jenkins\workspace\Ant Pipeline3\dist\AntExample.war 
 Solutation:-
 select SH shell script and give like below.
 cp -r "sorce path" "destination path"
+
+3.0.49.181
+cloud_user
+Devops@12345
