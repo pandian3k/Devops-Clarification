@@ -1,18 +1,11 @@
+
+13.229.226.183
 cloud_user
-6b477e035190f4617b01
-Public IPv4	13.229.154.59 
-Private IPv4	172.31.45.146 
-pandian0036c.mylabserver.com
+e0c341562716e3ba581c
 
-
-13.251.124.147
-	172.31.32.25 
-
-Username	cloud_user 
-Temp. Password	922979813ba2b4e33e18 
-pandian0037c.mylabserver.com
-
-
+54.169.50.136
+cloud_user
+32b0ea04d02fdc9a298d
 
 
 sudo yum -y install docker
