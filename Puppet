@@ -1,0 +1,68 @@
+//puppet server
+
+	$sudo vi /etc/hosts
+	192.168.0.176  node1
+	sudo  curl -O https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+	sudo dpkg -i puppetlabs-release-pc1-xenial.deb
+	sudo apt-get update –y
+	sudo apt-get install puppetserver
+	sudo ufw allow 8140
+	sudo vi /etc/default/puppetserver
+	sudo systemctl start puppetserver
+	sudo systemctl status puppetserver
+	------------------------------------------------------------------------------------------------------------------------
+	//node
+	
+	sudo vi /etc/hosts
+	192.168.0.175 puppet
+	sudo wget https://apt.puppetlabs.com/puppetlabs-release-pc1-xenial.deb
+	sudo dpkg -i puppetlabs-release-pc1-xenial.deb
+	sudo apt-get update
+	sudo apt-get install puppet-agent
+	sudo systemctl start puppet
+	sudo systemctl enable puppet
+	------------------------------------------------------------------------------------------------------------------------
+	// puppet server
+	
+	sudo /opt/puppetlabs/bin/puppet cert list
+	sudo /opt/puppetlabs/bin/puppet cert list --all //to view all certificate list
+	sudo /opt/puppetlabs/bin/puppet cert sign node1.domain.name 
+	or
+	sudo /opt/puppetlabs/bin/puppet cert sign –all
+	sudo vi /etc/puppetlabs/code/environments/production/manifests/site.pp
+------------------------------------------------------------------------------------------------------------------------
+	//paste below commands in site.pp file
+	
+	file {'/tmp/tempfile':                              # resource type file and filename
+	ensure  => present,                                 # make sure it exists
+	mode    => '0644',                                  # file permissions
+	content => "This is temporary file", 
+	}
+
+	or
+
+ 
+	package {'screen':
+	ensure => present,
+	}
+	package {'git':
+	ensure => present,
+	}
+	package {'wget':
+	ensure => present,
+	}
+	package {'python':
+	ensure => present,
+	}
+	package {'apache2':
+	ensure => present,
+	}
+	package {'ant':
+	ensure => present,
+	}
+
+	//node
+	sudo /opt/puppetlabs/bin/puppet agent --test
+
+	//to verify all the software installed on node use below command
+	apt list --installed
