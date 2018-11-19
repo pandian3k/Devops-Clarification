@@ -16,3 +16,4 @@ Difference between rebase and merge.
 How to squash or fixup commits?
 Explain git stash, pop?
 Branching strategies Pros and Cons — Feature, Release branching, Git flow?
+use of .ignore ?
