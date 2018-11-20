@@ -1,0 +1,62 @@
+cf86a96c3794977924763c5558aef1f8b8dfd27c
+
+
+sudo yum -y install docker
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo groupadd docker
+sudo usermod -aG docker jenkins
+sudo systemctl restart jenkins
+sudo systemctl restart docker
+
+cred
+
+webserver
+
+deploy  #  webser username
+jenkins  # webserver password
+webserver_login
+webserver login
+
+dockerhub
+
+dockerpandian
+password  # docker hub password
+docker_hub_login
+dockerhublogin
+ 
+producation server IP
+
+add it in Jenkins configuration 
+
+selecet Environment variables  //
+Nme: prod_ip
+value: public ip of producation server
+
+create a project in jenkins// select multibranch
+branch sources // select github
+credentials // click add and select Jenkins// 
+username --> GIT login ID
+Password give the API token created in git 
+ID -> github_key
+Description-> github key 
+owner -> github login ID
+Repository -> select deckerdeploy
+
+--------------------------------webserver-----------------
+
+adduser deploy
+echo "deploy:jenkins" | chpasswd
+groupadd docker
+usermod -a -G docker deploy
+echo "deploy ALL=(ALL) NOPASSWD: /usr/bin/docker run *" >> /etc/sudoers
+echo "deploy ALL=(ALL) NOPASSWD: /usr/bin/docker pull *" >> /etc/sudoers
+/usr/bin/yum -y install docker
+/usr/bin/systemctl enable docker
+/usr/bin/systemctl start docker
+
+yum -y install sshpass  // install only in jeniks server
+
+
+
+
