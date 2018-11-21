@@ -1,11 +1,4 @@
 
-13.229.226.183
-cloud_user
-e0c341562716e3ba581c
-
-54.169.50.136
-cloud_user
-32b0ea04d02fdc9a298d
 
 
 sudo yum -y install docker
