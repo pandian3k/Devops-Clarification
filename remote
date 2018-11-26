@@ -21,17 +21,22 @@ Private IPv4	172.31.29.254
 
 
 
------------------------------------- vinu
+------------------------------------
+Username	cloud_user 
+Temp. Password	48ea9ebcae145456038d 
+IP Address
+Public IPv4	13.250.53.245 
+Private IPv4	172.31.24.223 
+IPv6	2406:da18:77c:6102:f761:e53f:a86b:4899 
+Public Hostnames
+pandian0033c.mylabserver.com
+
 Credentials
 Username	cloud_user 
-Temp. Password	7a2e1ed9be660603ce56 
+Temp. Password	21ae93d1512111ec9cbe 
 IP Address
-Public IPv4	13.228.25.138 
-Private IPv4	172.31.30.148 
-
-Username	cloud_user 
-Temp. Password	e2313bf04d5a06fb9e57 
-IP Address
-Public IPv4	54.254.233.149 
-Private IPv4	172.31.31.40 
-
+Public IPv4	54.254.137.183 
+Private IPv4	172.31.30.87 
+IPv6	2406:da18:77c:6102:86bd:9415:2ad8:ed5e 
+Public Hostnames
+pandian0034c.mylabserver.com
