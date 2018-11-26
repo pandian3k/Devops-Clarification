@@ -21,16 +21,24 @@ IPv6	2406:da18:77c:6102:223d:cd50:e12a:6d90
 Public Hostnames
 pandian0033c.mylabserver.com
 
-
-
-
------------------------------------------------------------------------
-Credentials
+------------------------------------------------aravind----------------------
 Username	cloud_user 
-Temp. Password	9d5a72fcf94f1593541e 
+Temp. Password	07a2645fe9cd430ca272 
 IP Address
-Public IPv4	54.179.156.154 
-Private IPv4	172.31.29.254 
+Public IPv4	13.229.96.150 
+Private IPv4	172.31.27.118 
+IPv6	2406:da18:77c:6102:56be:3463:92c3:7fce 
+Public Hostnames
+pandian0037c.mylabserver.com
+
+Username	cloud_user 
+Temp. Password	34c2ae197b3a19dcff1d 
+IP Address
+Public IPv4	13.250.20.219 
+Private IPv4	172.31.31.251 
+IPv6	2406:da18:77c:6102:aa2a:97bd:3133:764f 
+Public Hostnames
+pandian0038c.mylabserver.com
 
 
 
