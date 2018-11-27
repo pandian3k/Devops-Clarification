@@ -4,26 +4,21 @@ Password	&4Fasdvvzs
 URL	https://509371540359.signin.aws.amazon.com/console?region=us-east-1 
 
 --------------------------------------------------- ravi--------------------------
+Credentials
 Username	cloud_user 
-Temp. Password	179646adcbdd3c7c2e11 
+Temp. Password	51c66fc57d8c2de4433f 
 IP Address
-Public IPv4	13.229.57.91 
-Private IPv4	172.31.26.18 
-IPv6	2406:da18:77c:6102:ba79:8a14:fa81:f55f 
-Public Hostnames
-pandian0036c.mylabserver.com
-pandian0036d.mylabserver.com
-
+Public IPv4	3.0.201.79 
+Private IPv4	172.31.34.208 
 
 Credentials
 Username	cloud_user 
-Temp. Password	81cd0505013bb1fecc3c 
+Temp. Password	4761c4d77b43b759310f 
 IP Address
-Public IPv4	13.250.16.178 
-Private IPv4	172.31.18.238 
-IPv6	2406:da18:77c:6102:223d:cd50:e12a:6d90 
-Public Hostnames
-pandian0033c.mylabserver.com
+Public IPv4	13.229.143.1 
+Private IPv4	172.31.35.196 
+IPv6	2406:da18:77c:6103:ac6d:529d:5fb5:f19a 
+
 
 ------------------------------------------------aravind----------------------
 Username	cloud_user 
