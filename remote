@@ -1,17 +1,24 @@
  ---------------------------------------------------Ravi--------------------------
-Credentials
 Username	cloud_user 
-Temp. Password	7beaa8aad49acd983542 
+Temp. Password	bdde2de44c6f4a58d351 
 IP Address
-Public IPv4	13.251.59.177 
-Private IPv4	172.31.40.76 
+Public IPv4	13.251.43.81 
+Private IPv4	172.31.36.89 
+IPv6	2406:da18:77c:6103:5d0f:d7f9:510:4565 
+Public Hostnames
+pandian0031c.mylabserver.com
+pandian0031d.mylabserver.com
 
-Credentials
 Username	cloud_user 
-Temp. Password	562a8f080be83d876cfc 
+Temp. Password	c860c25eb30fadf9120b 
 IP Address
-Public IPv4	13.251.27.97 
-Private IPv4	172.31.40.49 
+Public IPv4	13.251.129.214 
+Private IPv4	172.31.39.132 
+IPv6	2406:da18:77c:6103:8d3:c60b:c2e5:d80d 
+Public Hostnames
+pandian0032c.mylabserver.com
+pandian0032d.mylabserver.com
+
 
 --------------------------------------------------- vinu--------------------------
 Credentials
