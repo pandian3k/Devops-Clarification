@@ -5,27 +5,23 @@ Password	$5Xgmkhdfy
 URL	https://652902338280.signin.aws.amazon.com/console?region=us-east-1 
 --------------------------------------------------------------------------------------
 
-
-
-
 Username	cloud_user 
-Temp. Password	caebc3f49396dbff0289 
+Temp. Password	07e8db8a4a1657b896c5 
 IP Address
-Public IPv4	13.251.26.53 
-Private IPv4	172.31.47.229 
-IPv6	2406:da18:77c:6103:f3a8:f7a9:5321:c7b6 
+Public IPv4	13.251.27.38 
+Private IPv4	172.31.32.215 
+IPv6	2406:da18:77c:6103:3bda:3d91:e08:fb 
 Public Hostnames
-pandian0031c.mylabserver.com
-pandian0031d.mylabserver.com
+pandian0036c.mylabserver.com
 
-
-
+Credentials
 Username	cloud_user 
-Temp. Password	a87f29ab3c82b1860f47 
+Temp. Password	5e5ba5e69ae0e94b8c7d 
 IP Address
-Public IPv4	3.0.48.27 
-Private IPv4	172.31.46.105 
-IPv6	2406:da18:77c:6103:282c:e51f:7549:4d0f 
+Public IPv4	13.229.141.42 
+Private IPv4	172.31.35.24 
+IPv6	2406:da18:77c:6103:86aa:220e:dd76:a39a 
 Public Hostnames
-pandian0032c.mylabserver.com
-pandian0032d.mylabserver.com
+pandian0037c.mylabserver.com
+pandian0037d.mylabserver.com
+Auto Shutdown
