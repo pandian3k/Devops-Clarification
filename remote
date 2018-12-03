@@ -7,46 +7,21 @@ URL	https://720426174869.signin.aws.amazon.com/console?region=us-east-1
 --------------------------------------------------------------------------------------
 
 Username	cloud_user 
-Temp. Password	07e8db8a4a1657b896c5 
+Temp. Password	7214b2358adb3b2d806e 
 IP Address
-Public IPv4	13.251.27.38 
-Private IPv4	172.31.32.215 
-IPv6	2406:da18:77c:6103:3bda:3d91:e08:fb 
+Public IPv4	13.229.136.227 
+Private IPv4	172.31.34.59 
+IPv6	2406:da18:77c:6103:2cfb:8366:a982:243a 
 Public Hostnames
 pandian0036c.mylabserver.com
 
-Credentials
-Username	cloud_user 
-Temp. Password	5e5ba5e69ae0e94b8c7d 
-IP Address
-Public IPv4	13.229.141.42 
-Private IPv4	172.31.35.24 
-IPv6	2406:da18:77c:6103:86aa:220e:dd76:a39a 
-Public Hostnames
-pandian0037c.mylabserver.com
-pandian0037d.mylabserver.com
-Auto Shutdown
-
-
 
 
 Username	cloud_user 
-Temp. Password	314d5815cae8301ed422 
+Temp. Password	eec4225fefb52b299156 
 IP Address
-Public IPv4	3.0.48.89 
-Private IPv4	172.31.43.90 
-IPv6	2406:da18:77c:6103:a1bb:58fd:fcf6:f832 
+Public IPv4	13.229.154.120 
+Private IPv4	172.31.43.244 
+IPv6	2406:da18:77c:6103:7d7c:6dcf:4d88:ca25 
 Public Hostnames
-pandian0034c.mylabserver.com
-pandian0034d.mylabserver.com
-
-
-Username	cloud_user 
-Temp. Password	f32aa0cfa12ada4dec10 
-IP Address
-Public IPv4	13.251.124.70 
-Private IPv4	172.31.39.17 
-IPv6	2406:da18:77c:6103:de6c:190e:5513:3e72 
-Public Hostnames
-pandian0033c.mylabserver.com
-pandian0033d.mylabserver.com
+pandian0038c.mylabserver.com
