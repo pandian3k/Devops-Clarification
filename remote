@@ -1,7 +1,7 @@
 
 Username	cloud_user 
-Password	%5Ulnxmuth 
-URL	https://235115792854.signin.aws.amazon.com/console?region=us-east-1
+Password	%7Ddibsuhi 
+URL	https://837370398907.signin.aws.amazon.com/console?region=us-east-1 
 
 
 --------------------------------------------------------------------------------------
@@ -9,19 +9,23 @@ URL	https://235115792854.signin.aws.amazon.com/console?region=us-east-1
 Username	cloud_user 
 Temp. Password	7214b2358adb3b2d806e 
 IP Address
-Public IPv4	13.229.136.227 
+Public IPv4	13.250.238.186 
 Private IPv4	172.31.34.59 
 IPv6	2406:da18:77c:6103:2cfb:8366:a982:243a 
 Public Hostnames
 pandian0036c.mylabserver.com
+pandian0036d.mylabserver.com
 
 
 
+Credentials
 Username	cloud_user 
 Temp. Password	eec4225fefb52b299156 
 IP Address
-Public IPv4	13.229.154.120 
+Public IPv4	13.229.154.217 
 Private IPv4	172.31.43.244 
 IPv6	2406:da18:77c:6103:7d7c:6dcf:4d88:ca25 
 Public Hostnames
 pandian0038c.mylabserver.com
+pandian0038d.mylabserver.com
+Auto Shutdown
