@@ -1,4 +1,16 @@
 
+---
+- hosts: web-servers
+  become: true
+  tasks:
+    - name: Copy war onto tomcat server
+      copy:
+        src: /opt/playbooks/webapp/target/webapp.war
+        dest: /opt/apache-tomcat-8.5.35/webapp
+~
+
+
+
 Username	cloud_user 
 Temp. Password	4ae803a0d885ef4e9468 
 IP Address
