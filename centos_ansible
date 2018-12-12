@@ -97,6 +97,15 @@ ansible-playbook tree.yml
 ansible-playbook webserver.yml
 
 
+- hosts: web
+  user: ansible
+  sudo: yes
+  connection: ssh
+  gather_facts: no
+  tasks:
+  - name: Copy from the files directory test file
+    action: copy src=/home/ansible/playbook/multi-module/webapp/target/webapp.war dest=/opt/tomcat/webapps
+
 
 
 
