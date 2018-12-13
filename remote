@@ -42,3 +42,24 @@ IPv6	2406:da18:77c:6103:b8cc:559e:d1e4:25cf
 Public Hostnames
 pandian0034c.mylabserver.com
 pandian0034d.mylabserver.com
+
+
+------------------------------------------------vinu
+Credentials
+Username	cloud_user 
+Temp. Password	e46a21c6b02ff79f24ef 
+IP Address
+Public IPv4	13.229.137.166 
+Private IPv4	172.31.34.188 
+IPv6	2406:da18:77c:6103:df3f:2d95:1d6b:1506 
+Public Hostnames
+pandian0035c.mylabserver.com
+
+Username	cloud_user 
+Temp. Password	e7c5f4dd19cc0abc0b85 
+IP Address
+Public IPv4	13.229.137.9 
+Private IPv4	172.31.42.234 
+IPv6	2406:da18:77c:6103:3aff:a772:3c41:9239 
+Public Hostnames
+pandian0036c.mylabserver.com
