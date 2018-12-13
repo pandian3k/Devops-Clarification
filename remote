@@ -1,58 +1,22 @@
 
----
-- hosts: web-servers
-  become: true
-  tasks:
-    - name: Copy war onto tomcat server
-      copy:
-        src: /opt/playbooks/webapp/target/webapp.war
-        dest: /opt/apache-tomcat-8.5.35/webapp
-~
-
-
-
 Username	cloud_user 
-Temp. Password	4ae803a0d885ef4e9468 
+Temp. Password	e017cfeb194a2f55e25b 
 IP Address
-Public IPv4	13.229.147.99 
-Private IPv4	172.31.41.19 
-pandian0034c.mylabserver.com
-
-
-Username	cloud_user 
-Temp. Password	506144d81eb644b523fd 
-IP Address
-Public IPv4	3.0.209.130 
-Private IPv4	172.31.38.253 
-pandian0035c.mylabserver.com
-
-Username	cloud_user 
-Temp. Password	098ab9c60881b4175382 
-IP Address
-Public IPv4	13.251.42.40 
-Private IPv4	172.31.44.207 
-pandian0036c.mylabserver.com
-
-
-
-***********************************
-
-Credentials
-Username	cloud_user 
-Temp. Password	f76f9c9eed90580eb204 
-IP Address
-Public IPv4	13.251.110.230 
-Private IPv4	172.31.45.52 
-IPv6	2406:da18:77c:6103:d199:87a8:5041:9a7 
+Public IPv4	13.251.35.231 
+Private IPv4	172.31.47.118 
+IPv6	2406:da18:77c:6103:1901:82b5:673:8bd 
 Public Hostnames
 pandian0031c.mylabserver.com
 
-Credentials
+
+
+
 Username	cloud_user 
-Temp. Password	1fe515a5ead4f17ee780 
+Temp. Password	bc959ffd1d65324feec1 
 IP Address
-Public IPv4	3.0.49.145 
-Private IPv4	172.31.44.196 
-IPv6	2406:da18:77c:6103:eea:995a:1f9b:4be5 
+Public IPv4	13.251.105.23 
+Private IPv4	172.31.39.33 
+IPv6	2406:da18:77c:6103:740d:dc29:ba41:3e75 
 Public Hostnames
 pandian0032c.mylabserver.com
+pandian0032d.mylabserver.com
