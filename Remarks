@@ -23,12 +23,13 @@ echo "deploy ALL=(ALL) NOPASSWD: /usr/bin/docker pull *" >> /etc/sudoers
 
 yum -y install sshpass  // install only in jeniks server
 
-
-
+*****************************************************************************************************
 
 https://docs.ansible.com/ansible/modules_by_category.html
 
+https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
 
+*********************************************************************************************
 
 *************JENKINS SLAVE***************
 
