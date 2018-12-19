@@ -5,27 +5,11 @@ error parsing HTTP 403 response body: invalid character '<' looking for beginnin
 
 
 
-
-Credentials
 Username	cloud_user 
-Temp. Password	46190048702950de01f2 
+Temp. Password	9bb2f67845c56c0455d3 
 IP Address
-Public IPv4	13.229.156.17 
-Private IPv4	172.31.33.153 
-IPv6	2406:da18:77c:6103:a4fc:9cb2:1265:948 
+Public IPv4	3.1.23.78 
+Private IPv4	172.31.39.80 
+IPv6	2406:da18:77c:6103:712:5a1c:1bf4:ee69 
 Public Hostnames
-pandian0032c.mylabserver.com
-pandian0032d.mylabserver.com
-
-
-
-
-Username	cloud_user 
-Temp. Password	ac0f7708e6b59641c9b5 
-IP Address
-Public IPv4	13.251.35.164 
-Private IPv4	172.31.46.169 
-IPv6	2406:da18:77c:6103:b3ac:5959:de65:855e 
-Public Hostnames
-pandian0033c.mylabserver.com
-pandian0033d.mylabserver.com
+pandian0032c.mylabserver.com.
