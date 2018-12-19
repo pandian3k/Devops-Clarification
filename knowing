@@ -1,0 +1,12 @@
+Role: RELEASE SUPPORT (1 year)
+
+Designed and developed the automatic product up gradation module. Executed Continuous Integration setup using Jenkins for different customer projects. Create, configure and declare the archetypes for customer and also create project with different technologies based on particular customer requirements.Develop build and deployment scripts for deployment to multiple servers.
+
+
+
+
+Responsibilities:
+	Working on Bitbucket (version control tool)
+	Build, code coverage, test will be done by Cloudbees Jenkins.
+	Deployment is done in Apache Tomcat or Ansible.
+	Deployed image with be maintained in a Docker hub.
