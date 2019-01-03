@@ -1,42 +1,20 @@
 Credentials
 Username	cloud_user 
-Temp. Password	7a40d7f459fb63409f41 
+Temp. Password	0d2f47e53451cf121d28 
 IP Address
-Public IPv4	13.250.182.36 
-Private IPv4	172.31.40.179 
-IPv6	2406:da18:77c:6103:8524:9955:5a7:7ddb 
+Public IPv4	3.0.200.28 
+Private IPv4	172.31.41.131 
+IPv6	2406:da18:77c:6103:4780:3530:d6c3:f568 
 Public Hostnames
 pandian0031c.mylabserver.com
-pandian0031d.mylabserver.com
 
+Credentials
 Username	cloud_user 
-Temp. Password	e700c85785b50ba83cd9 
+Temp. Password	a08a7f955edc7f325bb8 
 IP Address
-Public IPv4	13.250.182.99 
-Private IPv4	172.31.43.60 
-IPv6	2406:da18:77c:6103:358e:1051:fe2a:63cc 
+Public IPv4	13.229.145.224 
+Private IPv4	172.31.34.31 
+IPv6	2406:da18:77c:6103:12e3:f7bc:9f96:c093 
 Public Hostnames
 pandian0034c.mylabserver.com
 pandian0034d.mylabserver.com
-
--------------------------------------------------
-
-Username	cloud_user 
-Temp. Password	505d3e494384f9848004 
-IP Address
-Public IPv4	13.229.138.30 
-Private IPv4	172.31.39.112 
-IPv6	2406:da18:77c:6103:4d2f:640b:b163:221c 
-Public Hostnames
-pandian0035c.mylabserver.com
-pandian0035d.mylabserver.com
-
-Username	cloud_user 
-Temp. Password	cdfe28b45ce981d92a5e 
-IP Address
-Public IPv4	13.251.103.134 
-Private IPv4	172.31.44.119 
-IPv6	2406:da18:77c:6103:8f55:7711:5e1b:1b2f 
-Public Hostnames
-pandian0036c.mylabserver.com
-pandian0036d.mylabserver.com
