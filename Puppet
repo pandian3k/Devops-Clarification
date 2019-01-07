@@ -1,3 +1,26 @@
+Vagrant.configure("2") do |config|
+    config.vm.define "puppet" do |puppet|
+    puppet.vm.box = "ubuntu/xenial64"
+    puppet.vm.network "private_network", ip: "192.168.0.105"
+    puppet.vm.hostname = "puppet"
+	puppet.vm.provider "virtualbox" do |v|
+    v.memory = 4096
+    end
+	end
+    config.vm.define "node1" do |node1|
+    node1.vm.box = "ubuntu/xenial64"
+    node1.vm.network "private_network", ip: "192.168.0.106"
+    node1.vm.hostname = "node1"
+	end
+	config.vm.define "node" do |node|
+    node.vm.box = "ubuntu/xenial64"
+    node.vm.network "private_network", ip: "192.168.0.107"
+    node.vm.hostname = "node"
+	end
+	end
+
+
+
 //puppet server
 
 	$sudo vi /etc/hosts
