@@ -1,0 +1,42 @@
+    1  yum install java-1.8*
+
+    3  yum install wget
+    4  cd /opt
+    5  wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.37/bin/apache-tomcat-8.5.37.tar.gz
+    6  ls
+    7  tar -zvxf
+    8  tar -zvxf apache-tomcat-8.5.37.tar.gz
+    9  ls
+   10  cd apache-tomcat-8.5.37
+   11  ls
+   12  cd bin/
+   13  ls
+   14  ps -ef | grep tomcat
+   15  chmod +x startup.sh
+   16  chmod +x shutdown.sh
+   17  echo $PATH
+   18  ln -s /opt/apache-tomcat-8.5.37/bin/startup.sh /usr/local/bin/tomcatup
+   19  ln -s /opt/apache-tomcat-8.5.37/bin/shutdown.sh /usr/local/bin/tomcat down
+   20  ln -s /opt/apache-tomcat-8.5.37/bin/shutdown.sh /usr/local/bin/tomcatdown
+   21  tomcatup
+   22  ps -ef | grep tomcat
+   23  ls
+   24  cd ..
+   25  ls
+   26  cd conf/
+   27  ls
+   28  vi server.xml
+   29  tomcatdown
+   30  ps -ef | grep tomcat
+   31  tomcatup
+   32  ls
+   33  find / -name context.xml
+   34  vi /opt/apache-tomcat-8.5.37/webapps/host-manager/META-INF/context.xml
+   35  vi /opt/apache-tomcat-8.5.37/webapps/manager/META-INF/context.xml
+   36  tomcatup
+   37  tomcatdown
+   38  tomcatup
+   39  vi tomcat-users.xml
+   40  tomcatdown
+   41  tomcatup
+   42  history
