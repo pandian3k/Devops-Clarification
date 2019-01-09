@@ -1,0 +1,41 @@
+Install Terraform commands
+Section 1, Lecture 10
+Here is the bash function to install terrafrom:
+
+
+
+TERRAFORM_ZIP_FILE=terraform_0.11.7_linux_amd64.zip
+TERRAFORM=https://releases.hashicorp.com/terraform/0.11.7
+TERRAFORM_BIN=terraform
+ 
+function install_terraform {
+    if [ -z $(which $TERRAFORM_BIN) ]
+       then
+           wget ${TERRAFORM}/${TERRAFORM_ZIP_FILE}
+           unzip ${TERRAFORM_ZIP_FILE}
+           sudo mv ${TERRAFORM_BIN} /usr/local/bin/${TERRAFORM_BIN}
+           rm -rf ${TERRAFORM_ZIP_FILE}
+    else
+       echo "Terraform is most likely installed"
+    fi
+ 
+}
+ 
+install_terraform 
+
+
+Alternatively:
+
+Install terraform on MacOS :
+
+1) Download ZIP file
+wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_darwin_amd64.zip
+2) unzip this ZIP package
+3) copy it to your executable path
+
+Install terraform on Windows:
+
+1) Download ZIP file
+wget https://releases.hashicorp.com/terraform/0.11.7/terraform_0.11.7_windows_amd64.zip
+2) unzip this ZIP package
+3) copy it to your executable path
