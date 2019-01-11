@@ -1,0 +1,168 @@
+CHEF COMMANDS
+
+	First Step
+	
+	Install Vagrant and virtual box
+	Create vagrant file 
+------------------------------------------------------------------------------------------------------------------------
+	Second step
+	
+	vagrant init ubuntu/trusty64 
+	Replace with below commands in vagrant file
+
+	Vagrant.configure("2") do |config|
+	config.vm.define "developmentkit" do |developmentkit|
+	developmentkit.vm.box = "ubuntu/trusty64"
+   	developmentkit.vm.network "private_network", ip: "192.168.0.252"
+        developmentkit.vm.hostname = "developmentkit.example.com"
+	end
+        config.vm.define "chefserver" do |chefserver|
+    	chefserver.vm.box = "ubuntu/trusty64"
+    	chefserver.vm.network "private_network", ip: "192.168.0.253"
+    	chefserver.vm.hostname = "chefserver.example.com"
+    	chefserver.vm.provider "virtualbox" do |v|
+    	v.memory = 4096
+    	v.cpus = 2
+    	end
+	end
+	config.vm.define "node" do |node|
+    	node.vm.box = "ubuntu/trusty64"
+    	node.vm.network "private_network", ip: "192.168.0.3"
+    	node.vm.hostname = "node.example.com"
+	end
+	end
+
+	//up the machine using below commands
+	vagrant up 
+------------------------------------------------------------------------------------------------------------------------
+	Third Step
+	paste the chef developmentkit and chef server of ubuntu in vagrant folder
+------------------------------------------------------------------------------------------------------------------------
+	Fourth Step 
+
+	vagrant ssh developmentkit
+	ls  /vagrant
+	sudo dpkg -i /vagrant/chefdk_0.9.0-1_amd64.deb
+	mkdir .chef
+	vi .chef/knife.rb
+   	cookbook_path ['/home/vagrant/cookbooks']  //In knife.rb
+	mkdir cookbooks
+	cd cookbooks
+	chef generate cookbook my_cookbook 
+	ls my_cookbook/  
+	cd my_cookbook/recipes
+	vi default.rb
+
+	// In default.rb paste the below commands
+	file '/tmp/hello.txt' do
+	content 'hello world'
+	end	
+
+	or
+	
+	package 'nginx' do
+  	action :install
+	end
+
+	service 'nginx' do
+ 	action [ :enable, :start ]
+	end
+	
+		
+	sudo chef-client -z --runlist 'recipe[my_cookbook]'  //to verify my_cookbook is working or not
+	exit
+------------------------------------------------------------------------------------------------------------------------
+
+	Fifth step 
+
+	// go to root user of developmentkit
+	sudo -s
+	ls /etc
+	vi hosts
+
+	//add these three lines in hosts file
+	192.168.0.253 chefserver.example.com chefserver
+	192.168.0.252 developmentkit.example.com developmentkit
+	192.168.0.3 node.example.com node
+	
+	//save it by using escape :wq
+	exit
+------------------------------------------------------------------------------------------------------------------------
+	Sixth Step
+	//In chefserver machine
+	vagrant ssh chefserver
+	sudo -s
+	ls /etc
+	vi hosts
+
+	//add these three lines in hosts file
+
+	192.168.0.253 chefserver.example.com chefserver
+	192.168.0.252 developmentkit.example.com developmentkit
+	192.168.0.3 node.example.com node
+	//save it by using escape :wq
+	ping node // to verify node is connected to server - stop using ctrl+c
+	exit
+------------------------------------------------------------------------------------------------------------------------
+
+	Seventh Step 	//In node machine
+	vagrant ssh node
+	sudo -s
+	ls /etc
+	vi hosts
+
+	//add these three lines in hosts file
+	192.168.0.253 chefserver.example.com chefserver
+	192.168.0.252 developmentkit.example.com developmentkit
+	192.168.0.3 node.example.com node
+
+	//save it by using escape :wq
+	exit
+------------------------------------------------------------------------------------------------------------------------
+	Eighth Step 	//In chefserver machine
+
+	vagrant ssh chefserver
+	sudo -s
+	ls /vagrant/
+	dpkg -i /vagrant/chef-server-core_XXXXXXXX.deb //install chef server software in chef server
+	chef-server-ctl reconfigure
+	chef-server-ctl user-create admin admin admin admin@example.com LearnDevops -f admin.pem
+	chef-server-ctl org-create learndevops "Learn Devops Course" --association_user admin -f org.pem //optional
+
+	cp admin.pem org.pem /vagrant  
+	or 
+	cp admin.pem /vagrant 	
+	exit
+------------------------------------------------------------------------------------------------------------------------
+	Ninth Step // In Developmentkit machine
+
+	vagrant ssh developmentkit
+	cp /vagrant/*.pem .
+ .
+	ls
+	vi .chef/knife.rb
+
+	//Add below commands in knife.rb
+
+	current_dir = File.dirname(__FILE__)
+	log_level                :info
+	log_location             STDOUT
+	node_name                "admin"
+	client_key               "/home/vagrant/admin.pem"
+	chef_server_url          "https://chefserver.example.com/organizations/learndevops"
+	cookbook_path            ["/home/vagrant/cookbooks"]
+
+	cat .chef/knife.rb // to display all above commands - to verify
+	knife ssl fetch
+	knife client list // it will shows learndevops-validator
+	knife bootstrap node.example.com -N node -s -x vagrant --sudo  // it will ask vagrant password - enter "vagrant"
+	knife client list  //it will show node also
+
+	cd cookbooks/
+	ls
+	knife cookbook upload my_cookbook  //uploading my_cookbook to chefserver
+	knife node run_list set node 'recipe[my_cookbook]' //it will show node run list and same uploaded to node run list
+	ssh node 'sudo chef-client' //give yes and enter vagrant node password in vagrant node - "vagrant"
+------------------------------------------------------------------------------------------------------------------------
+	Tenth Step
+	Verify Now hello.txt is copied in node /tmp folder
