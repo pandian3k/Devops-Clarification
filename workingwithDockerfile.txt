@@ -1,0 +1,18 @@
+Always start dockerfile with a FROM 
+
+make a DockerFile first and then from that directory run:
+ docker build -t centos7:latest .
+
+
+add user "user" and /bin/bash as default command: This will make an entry point for the container
+RUN useradd -ms /bin/bash user
+
+if you want to access this container as a root user you have to attach to this container by:
+ docker exec -u 0 -it hardcore_austin /bin/bash
+-u 0 ==>says that you want to access as root 
+
+After you create USER in Docker file the control goes to the "user" from the "root"
+
+So the order of execution matters
+Linear from top to bottom
+

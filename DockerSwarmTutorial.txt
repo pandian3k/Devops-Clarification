@@ -1,0 +1,49 @@
+At Leader:
+
+  1  docker swarm init
+    2  hostname -i
+    3  docker swarm init --advertise-addr 192.168.0.18
+    4  docker node ls
+    5  docker node ls
+    6  docker service create -p 80:80 --name web nginx:latest
+    7  docker service ls
+    8  docker service create -p 80:80 --name web nginx:latest
+    9  docker service ls
+   10  docker service create -p 80:80 --name web nginx:latest
+   11  docker service ls
+   12  curl http://localhost:80
+   13  docker node ls
+   14  docker ps
+   15  docker service inspect web
+   16  docker service scale web=15
+   17  docker service ps web
+   18  docker node update --availability drain node2
+   19  docker service ps web
+   20  docker ps
+   21  docker ps|wc -l
+   22  docker service scale web=15
+   23  docker ps|wc -l
+   24  docker service scale web=10
+   25  docker ps|wc -l
+   26  docker service ps web
+   27  docker node update --availability active node2
+   28  docker service ps web
+   29  docker node ls
+   30  docker node inspect node2 --pretty
+   31  history
+   
+   AT worker node2
+   
+    docker swarm join --token SWMTKN-1-3jqt6ertjmu2to60vu0ddraelkpne9shzth3igefxk85iow7b0-4cscwbsrtskgpalsumcivpl8u 192.168.0.18:2377
+   23  docker ps
+   24  docker ps -a
+   25  docker node ls
+   26  curl http://localhost:80
+   27  docker ps
+   28  docker ps
+   29  docker ps
+   30  docker ps
+   31  docker ps
+   32  history
+   
+   
