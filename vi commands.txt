@@ -1,0 +1,49 @@
+esc dd   //delete line
+esc o    // creat a new line
+esc 3dw  // delete 3 
+yank yy //copy the line
+esc 5 dd // delete 5 lines
+esc u // undo
+:set nonu
+:set nu
+:set ic
+shift j //to move line
+esc shift a //end of the line
+esc shift | // to go begain of the line
+exc : 55 //
+esc : vsp // split window
+ctl ww // change the cursur to window to window
+esc :e file name
+-----------------------------------------------------------------------------------
+chmod 
+-rwx r-- r-- // 1st bit are permission for user , 2 nd group ,3rd others
+r value : 4
+w value : 2
+x value : 1
+max value is r+w+x=4+2+1=7
+rwxrwxrwx = 777
+400 400 400
+r-- r-- r-- =444
+401 400 400
+r-x r-- r-- = 544
+421 000 000
+rwx ---	--- = 700
+chmod 644 file name // to change the permision to the file
+chmod o+wx file.txt // giving (write and exequte )permision for others in file.txt
+chmod o-wx file.txt // remove (write and exequte )permision for others in file.txt
+chmod -R 777 test <directoryname> // this will give full permision inside to the directory and files
+sudo chgrp raja filename // change the group
+sudo chgrp raja:raja filename // change the user and group for the file 
+getent passwd //
+getent group //
+-----------------------------------------------
+fg %1  // forgrount
+bg %1  // background
+--------------------------------------------------
+short filename // to short by alfa
+sort -n filename
+sort -nu filename1 filename2 // combail 2 files output assending
+cat filename | uniq
+sort filename | sort
+top // system usage
+ps //
