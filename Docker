@@ -26,3 +26,20 @@ docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
 
 dodocker inspect <container-id>
+
+
+docker volume --help
+
+docker volume create
+
+docker volume ls
+
+docker volume inspect volumename
+
+docker volume rm volumename
+
+docker volume prune  // remove unused volume
+
+docker pull jenkins
+
+dockr run --name demo -v myvolume:/var/jenkins_home -p 8080 -p 50000:50000 jenkins
