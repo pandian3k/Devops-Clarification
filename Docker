@@ -43,3 +43,37 @@ docker volume prune  // remove unused volume
 docker pull jenkins
 
 dockr run --name demo -v myvolume:/var/jenkins_home -p 8080 -p 50000:50000 jenkins
+
+
+
+*******************************************************************
+
+docker network create frontend
+docker network create localhost --internal
+docker container run -d --name database \
+--network localhost \
+-e MYSQL_ROOT_PASSWORD=P$ssW)rd0! \
+mysql:5.7
+
+docker container run -d \
+--name frontend-app \
+--network frontend \
+nginx:latest
+
+
+docker container ls
+
+docker network connect localhost frontend-app
+docker container inspect frontend-app
+
+
+
+
+docker volume create mysql_data
+docker container run -d --name app-database \
+--mount type=volume,source=mysql_data,target=/var/lib/mysql \
+-e MYSQL_ROOT_PASSWORD=P4ssW0rd0! \
+mysql:latest
+docker container inspect app-database
+
+
