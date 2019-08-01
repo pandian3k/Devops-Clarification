@@ -45,6 +45,11 @@ docker pull jenkins
 dockr run --name demo -v myvolume:/var/jenkins_home -p 8080 -p 50000:50000 jenkins
 
 
+sudo usermod -a -G docker $USER
+groups
+stat /var/run/docker.sock
+    sudo chmod 666 /var/run/docker.sock
+
 
 *******************************************************************
 
