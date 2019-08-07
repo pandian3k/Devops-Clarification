@@ -45,6 +45,15 @@ docker pull jenkins
 dockr run --name demo -v myvolume:/var/jenkins_home -p 8080 -p 50000:50000 jenkins
 
 
+docker network ls
+  docker network inspect bridge
+  sudo yum install bridge-utils
+  brctl show
+  docker run -it alpine sh
+  docker network inspect bridge
+  brctl show
+
+
 sudo usermod -a -G docker $USER
 groups
 stat /var/run/docker.sock
