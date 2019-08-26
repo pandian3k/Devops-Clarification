@@ -139,3 +139,7 @@ cd /var/lib/docker
 docker export loving_morse > mybuild4.tar 
 
 docker import mybuild4.tar mybuild:importv5
+
+
+sudo vim /etc/sysconfig/jenkins
+sudo systemctl restart jenkins
