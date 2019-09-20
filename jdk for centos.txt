@@ -20,9 +20,13 @@ export JAVA_HOME=/opt/jdk1.8.0_172
 export JAVA_PATH=$JAVA_HOME
 export PATH=$PATH:$JAVA_HOME/bin
 
-export JAVA_HOME=/opt/jdk1.8.0_172
-export JRE_HOME=/opt/jdk1.8.0_172/jre
-export PATH=$PATH:/opt/java/dk1.8.0_172/bin:/optjava/jdk1.8.0_172/java/bin
+
+
+export JRE_HOME=/usr/lib/jvm/java-11-openjdk-11.0.4.11-1.el7_7.x86_64/jre
+export PATH=$PATH:$JRE_HOME/bin
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-11.0.4.11-1.el7_7.x86_64
+export JAVA_PATH=$JAVA_HOME
+export PATH=$PATH:$JAVA_HOME/bin
 
 
 
