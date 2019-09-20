@@ -17,3 +17,10 @@ chmod +x maven.sh
 source /etc/profile.d/maven.sh
 
 mvn --version
+
+
+sudo yum install maven
+
+sudo vi /etc/profile.d/maven.sh
+export M2_HOME="${M2_HOME:-/usr/share/maven}"
+export JAVA_HOME; $M2_HOME/bin/mvn
