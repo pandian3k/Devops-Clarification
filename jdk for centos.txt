@@ -6,12 +6,6 @@ alternatives --set jar /opt/jdk1.8.0_172/bin/jar
 alternatives --set javac /opt/jdk1.8.0_172/bin/javac
 
 
-alternatives --install /usr/bin/javs java /opt/jdk1.8.0_172/bin/java 2
-alternatives --config java
-installation
-java -version
-
-
 cd /etc/profile.d/
 vi java.sh
 export JRE_HOME=/opt/jdk1.8.0_172/jre
@@ -20,7 +14,20 @@ export JAVA_HOME=/opt/jdk1.8.0_172
 export JAVA_PATH=$JAVA_HOME
 export PATH=$PATH:$JAVA_HOME/bin
 
+------------------------------------------------------------------------------
 
+ yum -y install java-11-openjdk java-11-openjdk-devel
+
+cat > /etc/profile.d/java11.sh <<EOF
+export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))
+export PATH=\$PATH:\$JAVA_HOME/bin
+export CLASSPATH=.:\$JAVA_HOME/jre/lib:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar
+EOF
+
+source /etc/profile.d/java11.sh
+java --version
+
+---------------------------------------------------------------------------------
 
 export JRE_HOME=/usr/lib/jvm/java-11-openjdk-11.0.4.11-1.el7_7.x86_64/jre
 export PATH=$PATH:$JRE_HOME/bin
