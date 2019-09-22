@@ -1,0 +1,71 @@
+yum update
+sudo su -
+
+--------------open jdk-------------------------------
+1 yum install java-11-openjdk java-11-openjdk-devel
+
+2  cat > /etc/profile.d/java11.sh <<EOF
+     export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))
+     export PATH=\$PATH:\$JAVA_HOME/bin
+     export CLASSPATH=.:\$JAVA_HOME/jre/lib:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar
+     EOF
+--------------jenkins-------------------------------
+  3  source /etc/profile.d/java11.sh
+    4  java --version
+    5  yum install wget git -y
+    6  wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
+    7  rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    8  yum install jenkins
+    9  systemctl start jenkins.service
+   10  systemctl status jenkins.service
+   11  cat /var/lib/jenkins/secrets/initialAdminPassword
+----------------------------------------maven--------------------------------------
+12  sudo yum install maven
+   13  vi /etc/profile.d/maven.sh
+   14  chmod +x /etc/profile.d/maven.sh
+   15  source /etc/profile.d/maven.sh
+   16  mvn --version
+     17  which git
+--------------------------------------tomcat--------------------------------------
+ 
+   18  cd /opt/
+   19  wget http://apachemirror.wuchna.com/tomcat/tomcat-8/v8.5.46/bin/apache-tomcat-8.5.46.tar.gz
+   20  ls
+   21  tar -xvf apache-tomcat-8.5.46.tar.gz
+   22  ls
+   23  cd apache-tomcat-8.5.46
+   24  ls
+   25  cd bin/
+   26  ls
+   27  ll
+   28  chmod +x shutdown.sh startup.sh
+   29  ll
+   30  ln -s /opt/apache-tomcat-8.5.46/bin/startup.sh /usr/local/bin/tomcatup
+   31  ln -s /opt/apache-tomcat-8.5.46/bin/shutdown.sh /usr/local/bin/tomcatdown
+   32  tomcatup
+   33  cd ..
+   34  cd conf/
+   35  ls
+   36  vi server.xml  // change the port number of tomcat webserver 
+        
+        Connector port="8880" protocol="HTTP/1.1"
+        
+   37  tomcatdown
+   38  tomcatup
+   39  ls
+   40  vi tomcat-users.xml // add user with password and give roles admin-gui,manager-gui,manager-script
+      <user username="admin" password="admin" roles="admin-gui,manager-gui,manager-script"/>
+      
+   41  tomcatdown
+   42  tomcatup
+   43  find / -name context.xml
+   44  vi /opt/apache-tomcat-8.5.46/webapps/host-manager/META-INF/context.xml  // comment using <!-- open and close --> in below location
+      <!--<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+            allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />-->
+
+   45  vi /opt/apache-tomcat-8.5.46/webapps/manager/META-INF/context.xml  // comment using <!-- open and close --> in below location
+      <!--<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+            allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />-->
+   
+   46  tomcatdown
+   47  tomcatup
