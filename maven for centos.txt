@@ -18,7 +18,7 @@ source /etc/profile.d/maven.sh
 
 mvn --version
 
-
+--------------------------------------------------------------
 sudo yum install maven
 
 sudo vi /etc/profile.d/maven.sh
