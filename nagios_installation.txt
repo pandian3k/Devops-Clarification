@@ -140,3 +140,5 @@ to slove the check_http error: "HTTP WARNING: HTTP/1.1 403 Forbidden"
 https://www.digitalocean.com/community/tutorials/how-to-install-nagios-4-and-monitor-your-servers-on-centos-7
 
 https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
+https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/configmain.html#check_external_commands
+
