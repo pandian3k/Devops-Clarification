@@ -6,10 +6,6 @@ visudo
 ansible ALL=(ALL)       NOPASSWD: ALL
 su - ansible
 
-172.31.20.136 hari03042.mylabserver.com hari03042
-172.31.24.115 hari03043.mylabserver.com hari03043
-
-
 
 sudo yum install epel-release
 sudo  yum install ansible
@@ -23,8 +19,6 @@ ip a
 sudo vi /etc/hosts
 ssh-copy-id hari03041
 ssh-copy-id hari03042
-ssh-copy-id hari03043
-ssh-copy-id hari03044
 
 cat /etc/ansible/ansible.cfg | grep -v '#'
 sudo vi /etc/ansible/hosts  // create a group and give only IP
