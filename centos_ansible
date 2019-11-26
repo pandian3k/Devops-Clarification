@@ -67,8 +67,18 @@ vi tree.yml
     action: package name=tree state=latest
 
 	
-tree
+vi test.yml
+---
+- hosts: all
+  user: ansible
+  become: yes
+  gather_facts: no
+  tasks:
 
+  - name: Install Apache Web Server
+    action: yum name=httpd state=installed
+  - name: Restart HTTPD
+    action: service name=httpd state=restarted
 
 vi webserver.yml
 - hosts: web
