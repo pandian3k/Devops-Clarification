@@ -1,0 +1,143 @@
+
+DevOps (Kubernetes): Basics points to remember:
+
+1. The smallest and most atomic unit that can be deployed on a Kubernetes cluster is a Pod. Pods wrap around containers.
+2. Deployments use labels to know which by pods on the cluster to manage.
+3. NodePort Services are reachable from outside of the K8s cluster by combining the IP address of any node in the cluster with a defined port.
+4. K8s Deployments bring scalability, rolling updates and rollbacks to the world of K8s pods.
+5. Deployments use ReplicaSets behind the scenes to handle the mechanics of scaling operations.
+6. RBAC in K8s is all about controlling which users can perform which actions against which resources.
+7. StorageClasses let you define a class of storage that can be created on-the-fly whenever a PVC that references it is instantiated.
+8. Every node in the cluster gets a pod running the kube-proxy process. This is responsible for local networking, including IPTABLES and IPVS rules.
+9. The API Server is like the Grand Central Station of a Kubernetes cluster.
+10. The Cluster Autoscaler wakes up every 10 seconds to check for pending pods. When it finds any, it adds more nodes to a node-pool so that the pending pods can be scheduled.
+
+DevOps (Ansible by Red Hat): Basics points to remember:
+
+1. It support both pull and push models.
+2. It provides Agent-less deployment and communication is faster than the master-agent model.
+3. It provides Zero downtime rolling updates to multi-tier application across the cloud.
+4. The platform is written in Python and allows users to script commands in YAML.
+5. It supports sequential order execution.
+6. A centralized Ansible workstation is commonly used to tunnel commands through multiple Bastion host servers and access machines in a private network.
+7. It can be used for: Provisioning, Configuration Management, Application Deployment, Security & Compliance, Orchestration, Continuous Delivery.
+8. If Ansible modules are the tools in workshop than  playbooks are instruction manuals and inventory of hosts are raw material.
+9. Ansible Vault allows  to keep sensitive data such as passwords or keys in encrypted files.
+10. Ansible contains modules for managing GCP, AWS and Azure resources.
+
+DevOps (Jenkins): Basics points to remember:
+
+1. Jenkins can be communicated via web based GUI, CLI and also provide Rest API for Python, XML and JSON.
+2. It is open source software and can be hosted internally.
+3. In Jenkins, Pipeline as code can be easily define through DSL in the Jenkinsfile.
+4. Jenkins 2 is a drop-in replacement of the Jenkins 1.x series of releases and fully backward compatible.
+5. In Jenkins, Pipelines are long-lasting and can survive infrastructure outages.
+6. It's master slave architecture supports distributed builds to reduce loads on the CI server.
+7. It has more than 1000 plugin and it is easy to create new plugin too.
+8. Jenkins is written in Java and supported almost all platforms.
+9. Jenkins integrates with virtually every SCM or build tool that exists.
+10. You just need to run: java -jar jenkins.war
+
+"Automation applied to an efficient operation will magnify the efficiency."
+
+DevOps (Docker): Basics points to remember:
+
+1. Docker is an open platform that use to build, ship and run applications.
+2. Container shares the kernel within the host OS and allow to run multiple Docker containers on the same host.
+3. Docker containers are lightweight in nature as compared to traditional tools like virtualization.
+4. Docker can manage hosts in on premises data center and also in private/ public cloud.
+5. Docker will ensures that applications and resources are isolated and segregated.
+6. Docker containers allow to commit changes to Docker images and version control them.
+7. Docker Hub is a registry of Docker images. One can think of the registry as a directory of all available Docker images. 
+8. A Dockerfile is a text-file that contains a list of commands that the Docker client calls while creating an image.
+9. Docker Compose is a tool for defining and running multi-container Docker applications.
+10. Each container have their own internal IP address and it could change if you start and stop the container.
+
+ $docker pull image_name:tag
+ $docker build -t image_name:tag
+ $docker start/stop container_name
+ $docker run --name container_name docker_image
+ 
+ DevOps (Nagios): Basic points to remember: 
+
+1. Nagios has Capabilities to monitor applications, services, operating systems, network protocols, system metrics and infrastructure components within a single tool.
+2. It can be integrated with in-house and third-party applications with multiple APIs.
+3. It's scheduled downtime allows for alert suppression during infrastructure upgrades.
+4. It is an open source software which released under the GPL license.
+5. It's historical reports provide record of alerts, notifications, outages and alert response. 
+6. It's failover capabilities ensure non-stop monitoring of critical IT infrastructure components and also can be scales to monitor thousands of nodes.
+7. Nagios core has ability to define event handlers to be run during service or host events for proactive problem resolution.
+8. Nagios core support for implementing redundant monitoring hosts and provide automatic log file rotation.
+9. It has three components: the daemon, the Web interface and the plugins.
+10. It provide multi-user access with Parallelised service checks.
+
+DevOps (Splunk): Basic points to remember: 
+
+1. Splunk is a tool that offers operational intelligence to collect, search, analyze, visualize, monitor and access dynamic data.
+2. Splunk can collect and index log data from any source imaginable from network traffic to web servers to custom applications.
+3. Splunk provides Real-Time search for streaming data and indexed historical data from the same interface.
+4. Splunk enterprise provides dashboards integrate charts, reports and re-usable panels to display a comprehensive data story.
+5. It can be used to set up alerts to automate the monitoring of system for specific recurring events.
+6. It can share saved searches and reports with Splunk users and can also distribute their results via email.
+7. There is no separate database requirements as splunk stores all data in its index.
+8. It converts complex logs to visual graphs and reports which provide simplified analysis, reporting and easy troubleshooting.
+9. It is capable enough to proactively review downtime and security incidents before they arise.
+10. It leverage the strength of artificial intelligence (AI) and machine learning (ML) to improve IT, security and business outcomes.
+
+DevOps (Vagrant): Basic points to remember: 
+
+1. Vagrant is a tool for building and managing virtual machine environments in a single workflow.
+2. It is focused on providing a consistent development environment workflow across multiple operating systems.
+3. Vagrant has a vast library of community contributed images or boxes to choose from.
+4. It provides a number of higher level features like  Synced folders, automatic networking, automatic SSH setup, HTTP tunneling 
+5. With Vagrant, create a single file for projects to describe the type of machine and software that you want to install.
+6. Vagrant comes with support out of the box for Hyper-V, a native hyper visor written by Microsoft.
+7. Vagrant share has three primary modes or features: HTTP Sharing, SSH Sharing and General Sharing.
+8. It has a set of environmental variables that can be used to configure and control it in a global way. 
+9. With Vagrant, one can quickly test things like shell scripts, Chef cookbooks, Puppet modules and more using local virtualization such as VirtualBox or VMware.
+10. Vagrant has a built-in command for initializing a directory for usage with Vagrant i.e. vagrant init.
+
+   $Vagrant up 
+   $Vagrant ssh
+   $Vagrant share
+   $Vagrant box add
+
+DevOps (PagerDuty): Basic points to remember:
+
+1. Pagerduty is an incident management solution supporting continuous delivery strategy. It also allows teams to deliver high-performing apps.
+2. It provide Real-time alerts with reliable and rich alerting facility.
+3. With Pagerduty, It's easy to detect and resolve incidents from development through production.
+4. It supports Platform Extensibility and allows scheduling and automated Escalations.
+5. Pagerduty Analytics provides Prescriptive Dashboards with Operational Review Analytics.
+6. It intelligently automate routing, suppression, notification and other behaviors based on event data, issue severity, support hours etc.
+7. It provide extend event management and incident management workflows with robust API support.
+8. It integrates with any ITSM or ticketing solution (JIRA, ServiceNow etc.) to automatically create tickets from PagerDuty incidents.
+9. It can be integrated with AWS, Datadog, Dynatrace, New Relic, Sumo Logic and 300+ platforms.
+10. It provides enterprise-Grade security & controls with real-time collaboration.
+
+
+DevOps (SonarQube): Basic points to remember:
+
+1. SonarQube is an open source tool which is used for analyzing the code quality.
+2. It tracks the quality of short-lived and long-lived code branches to ensure that only clean, approved code gets merged into master.
+3. It provides native integrations with build systems to schedule the execution of an analysis from all CI engines.
+4. SonarQube Web API can be used to automatically provision a SonarQube project, feed a BI tool, monitor SonarQube etc.
+5. Using webhooks, SonarQube can be integrated as a promotion step in delivery pipelines.
+6. It addresses coding rules, test coverage, duplication, API documentation, complexity and architecture, providing all details in dashboard.
+7. It stores all analysis results in a database, preserving historical data for future reference and comparison.
+8. It features a standard role-based authentication system allowing a secure instance. 
+9. It detects bugs in the code automatically and alerts developers to fix them before rolling it out for production.
+10. SonarQube supports as a code analyzer for 25+ programming languages.
+
+
+(Chef Software): Basics points to remember:
+
+1. Chef uses Ruby Domain Specific Language (Ruby DSL) and its developer oriented.
+2. Ohai is a tool that is used to collect system configuration data, which is provided to the chef-client for use within cookbooks.
+3. A run-list defines all of the information necessary for Chef to configure a node into the desired state.
+4. The chef-client uses six types (default, force_default, normal, override, automatic, force_override) of attributes to determine the value that is applied to a node during the chef-client run.  
+5. The chef-repo is a directory on workstation that stores: Cookbooks, Roles, Data bags, Environments.
+6. A cookbook defines a scenario and contains: Receipes, Attribute value, Templates, File Distribution etc.
+7. All of the ports used by the Chef server are TCP ports.
+8. A handler is used to identify situations that arise during a chef-client run and then tell the chef-client how to handle these situations when they occur.
+9. Chef push jobs uses the Chef server API and a Ruby client to initiate all connections to the Chef server. A knife plugin is used to initiate job creation and job tracking.
