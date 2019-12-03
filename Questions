@@ -1,0 +1,24 @@
+1. Write a program in python to reverses string 
+2. Write a program in Bash using string replace gave a scenario 
+3. Write a Dockerfile from scratch for running a python file (app.py)
+4. What is difference b/w ENTRYPOINT,CMD and Run command in Dockerfile 
+5. How do you setup volume for docker container and what happens a container with volume is stopped. Do we loose data ?
+6. Difference b/w Awk command and string replace something like that ?
+7. Difference b/w Statefulset and deployments in Kubernetes 
+8. What is Liveliness and readiness probe and how to implement that ?
+9. What is ingress and wh type of ingress you are using in your project
+10. Explain k8s architecture and infra setup in your project 
+11. How a Linux server boot up?
+12.Expmain OSI layers in detail along with ports used in each layer link this with Loadbalancer in your project and explain what kind of LB you are using and in wh layer it works you app traffic etc 
+13.how to create a key pair manilually and enable in a Linux server ?
+14. How do you enable password less authentication on a Linux server ?
+15. What is preconfigured login ?
+16. Write a Jenkins pipeline for executing java code ?
+17. Difference b/w maven ANT and Grdale
+18. How to add a slave in Jenkins?
+19. How to add a worker node in k8s?
+20. What are the drawbacks of using docker swarm and why k8s ?
+
+
+Some questions on Linux , Networking and Kuberntes 
+
