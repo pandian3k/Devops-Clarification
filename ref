@@ -21,6 +21,8 @@ chmod +x /etc/profile.d/java11.sh
     9  systemctl start jenkins.service
    10  systemctl status jenkins.service
    11  cat /var/lib/jenkins/secrets/initialAdminPassword
+   
+  [ sudo vim /etc/sysconfig/jenkins  // for port changing  ]
 ----------------------------------------maven--------------------------------------
 12  sudo yum install maven
 13  sudo vi /etc/profile.d/maven.sh
