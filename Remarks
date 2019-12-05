@@ -36,11 +36,11 @@ https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
 sudo yum -y install git java-1.8.0-openjdk
 sudo useradd -d /var/lib/jenkins jenkins
 ssh-keygen
-cat /home/user/.ssh/id_rsa.pub
+cat /home/centos/.ssh/id_rsa.pub
 sudo mkdir /var/lib/jenkins/.ssh
 sudo vi /var/lib/jenkins/.ssh/authorized_keys
 sudo chown -R jenkins:jenkins /var/lib/jenkins/.ssh
-cat /home/user/.ssh/id_rsa  //copy this key 
+cat /home/centos/.ssh/id_rsa  //copy this key 
 
 go to Jenis // Manage Jenkins // Manage Nodes // new node// node name / select permanent Agent/ ok
 Remote root directory - /var/lib/jenkins
