@@ -24,8 +24,13 @@ docker rmi $(docker images -q)
 docker tag <imageID> username/repository:tag  # Tag <image> for upload to registry
 docker push username/repository:tag            # Upload tagged image to registry
 docker run username/repository:tag                   # Run image from a registry
+docker stats <Container_name>  // to check the cpu and memory utlizying by container
+docker ps -q | xargs  docker stats --no-stream  // to check the cpu and memory utlizying by all container
+docker run -it --cpus=".5" ubuntu /bin/bash    // to set the cpu size for the contaiiner
+docker container inspect <container-id> |grep -i cpu
 
-dodocker inspect <container-id>
+docker inspect <container-id>
+
 
 
 docker volume --help
