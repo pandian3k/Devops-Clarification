@@ -48,15 +48,17 @@ export JAVA_HOME; $M2_HOME/bin/mvn
    20  ls
    21  tar -xvf apache-tomcat-8.5.46.tar.gz
    22  ls
-   23  cd apache-tomcat-8.5.46
+       mv apache-tomcat-8.5.46 apache-tomcat
+       sudo chown centos:centos -R apache-tomcat
+   23  cd apache-tomcat
    24  ls
    25  cd bin/
    26  ls
    27  ll
    28  chmod +x shutdown.sh startup.sh
    29  ll
-   30  ln -s /opt/apache-tomcat-8.5.46/bin/startup.sh /usr/local/bin/tomcatup
-   31  ln -s /opt/apache-tomcat-8.5.46/bin/shutdown.sh /usr/local/bin/tomcatdown
+   30  ln -s /opt/apache-tomcat/bin/startup.sh /usr/local/bin/tomcatup
+   31  ln -s /opt/apache-tomcat/bin/shutdown.sh /usr/local/bin/tomcatdown
    32  tomcatup
    33  cd ..
    34  cd conf/
