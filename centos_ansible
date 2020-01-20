@@ -11,21 +11,27 @@ sudo yum install epel-release
 sudo  yum install ansible
 ansible --version
 sudo vi /etc/ansible/ansible.cfg
-ssh-keygen -t rsa
-ls -lah
-cd .ssh
-ls -ltr
-ip a
-sudo vi /etc/hosts
-ssh-copy-id hari03041
-ssh-copy-id hari03042
+inventory      = /etc/ansible/hosts	// remove # from Inventory
+sudo vi /etc/hosts    // private ip address 
+172.31.42.71
+172.31.47.90
 
-cat /etc/ansible/ansible.cfg | grep -v '#'
-sudo vi /etc/ansible/hosts  // create a group and give only IP
-sudo touch /var/log/ansible.log
-sudo chown ansible:ansible /var/log/ansible.log
-ls -ld /var/log/ansible.log
-ansible -m ping all
+sudo vi /etc/ansible/hosts    // create a group with private ip address 
+[demo]
+172.31.42.71
+172.31.47.90
+
+sudo vi /etc/ssh/sshd_config
+
+PasswordAuthentication yes  // remove # before Password
+#PermitEmptyPasswords no
+#PasswordAuthentication no  // add # before Password
+
+sudo service sshd restart
+
+ssh-keygen 
+ssh-copy-id   172.31.42.71	// privateip of ansible system
+ssh-copy-id   172.31.47.90	// privateip of client system
 
 Client System
 *****
@@ -34,13 +40,17 @@ passwd ansible
 visudo
 su - ansible
 
-ip a
-uname -n
-sudo vi /etc/hosts
-cd .ssh
-ls -ltr
-cat authorized_keys
+sudo vi /etc/ssh/sshd_config
 
+PasswordAuthentication yes  // remove # before Password
+#PermitEmptyPasswords no
+#PasswordAuthentication no  // add # before Password
+
+sudo service sshd restart
+
+sudo vi /etc/hosts    // private ip address 
+172.31.42.71
+172.31.47.90
 
 ***************************** Ansible Server
 mkdir playbook
@@ -99,6 +109,15 @@ ansible -m ping all
 ansible-playbook first.yml
 ansible-playbook tree.yml
 ansible-playbook webserver.yml
+
+
+
+#cat /etc/ansible/ansible.cfg | grep -v '#'
+#sudo vi /etc/ansible/hosts  // create a group and give only IP
+#sudo touch /var/log/ansible.log
+#sudo chown ansible:ansible /var/log/ansible.log
+#ls -ld /var/log/ansible.log
+ansible -m ping all
 
 
 - hosts: web
