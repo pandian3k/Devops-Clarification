@@ -15,16 +15,5 @@ select SH shell script and give like below.
 cp -r "sorce path" "destination path"
 
 
-cloud_user
-6b477e035190f4617b01
-Public IPv4	13.229.154.59 
-Private IPv4	172.31.45.146 
-pandian0036c.mylabserver.com
 
-
-13.251.124.147
-	172.31.32.25 
-
-Username	cloud_user 
-Temp. Password	922979813ba2b4e33e18 
-pandian0037c.mylabserver.com
+https://github.com/jenkinsci/docker.git
