@@ -28,7 +28,9 @@ docker stats <Container_name>  // to check the cpu and memory utlizying by conta
 docker ps -q | xargs  docker stats --no-stream  // to check the cpu and memory utlizying by all container
 docker run -it --cpus=".5" ubuntu /bin/bash    // to set the cpu size for the contaiiner
 docker container inspect <container-id> |grep -i cpu
-
+docker images -f dangling=true
+docker images -f dangling=true -q
+docker rmi $(docker images -f dangling=true -q)
 docker inspect <container-id>
 
 
