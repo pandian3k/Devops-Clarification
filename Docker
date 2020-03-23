@@ -33,7 +33,7 @@ docker images -f dangling=true -q
 docker rmi $(docker images -f dangling=true -q)
 docker inspect <container-id>
 
-
+du -shc
 
 docker volume --help
 
