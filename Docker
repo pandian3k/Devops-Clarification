@@ -33,6 +33,102 @@ docker images -f dangling=true -q
 docker rmi $(docker images -f dangling=true -q)
 docker inspect <container-id>
 
+docker run -d -p 3306:3306 --name sample_mysql -e MYSQL_ROOT_PASSWORD=12345678 mysql:5.7
+
+docker run -d -p 3306:3306 --name sample_mysql -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=docker_db -e MYSQL_USER=docker_user -e MYSQL_PASSWORD=1234 mysql:5.7
+
+docker run -d --name postgres -e "POSTGRES_PASSWORD=12345678" -e POSTGRES_USER=docker_user _e POSTGRES_DB=docker_db -p 5432:5432 postgres
+
+docker run --help | grep memory
+docker run --help | grep cpu
+
+docekr run -d --name nginx --memory "200mb" nginx-alphine 
+docekr run -d --name nginx --memory "200mb" --cpuset-cpu 0,1 nginx-alphine 
+
+docker cp index1.html 
+hippo:/usr/local/hippo/htdocs/index.html // this is used to copy files from host machine to container.
+
+
+docker cp hippo:/opt/hippo.txt . // this is used to copy the document from container to host machine.
+
+docker stats nginx
+
+docker run -d --name hippo centos python -m SimpleHTTPServer 8080
+
+docker run -d --name hippo -p 9090:8080 centos python -m SimpleHTTPServer 8080
+
+-----------------------------------
+docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker exec -it containerid bash
+
+mysql -u root -p12345678
+
+show database
+create database test_db;
+show database
+
+exit
+-------------------
+docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker run -d -v /mnt/mysql:/var/lib/mysql --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker volume create hippo_volume
+docker info | grep root
+cd /mnt/docker/volume
+
+docker run -d -v hippo_volume:/var/lib/mysql --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" -v var/lib/mysql mysql:5.7 
+
+docker rm -fv mysql
+
+ip a | grep docker
+
+docker network ls
+
+docker exec container_name bash -c "ping ip od second_container"
+
+docker network inspect bridge
+docker network create --help
+docker network create -d bridge --subbnet  172.18.0.0/16 --gateway 172.18.0.1 hippo_network
+
+docker network rm hippo_network
+
+docker run -d --network hippo_network --name sample centos 
+
+docker network inspect hippo_network
+
+docker network connect // used to communicate between different network
+
+docker network create -d bridge --subnet 172.20.0.0/16 --gateway 172.20.0.1 hippo1
+docker network create -d bridge --subnet 172.30.0.0/16 --gateway 172.30.0.1 hippo2
+
+docker run -itd --name hippo1_cont --network hippo1 centos
+docker run -itd --name hippo2_cont --network hippo2 centos
+
+docker exec hippo1_cont bash -c "ping hippo2_cont"
+ 
+
+docker network connect hippo1 hippo2_cont  // after this we can ping different network
+
+docker exec hippo1_cont bash -c "ping hippo2_cont"
+
+docker network disconnect hippo1 hippo2_cont
+
+docker run -itd --network htippo1 --ip 172.20.0.150 --name sample centos  // assign IP to a container
+
+
+docker run -it --network host centos bash
+hostname  // get same linke ec2
+
+
+
+
+docker run -dit --network none centos
+docker exec -it container_id bash
+
 du -shc
 
 docker volume --help
