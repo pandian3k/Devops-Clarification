@@ -1,0 +1,43 @@
+https://docs.docker.com/storage/
+
+Volumes :
+	The recommended way to persist data, stored at /var/lib/docker/volumes/
+
+Bind Mounts:
+	Have limited functionality and you must use the exact file path o the host; volumes recommended
+	
+TMPFS Mounts:
+Stored only in a host's memory in linux
+
+Block Storage:
+	Fixed chunks of data
+	No metadata is stored
+	Best for I/O intensive apps
+	SAN storage uses block storage protocols like iSCSI
+	
+Object Storage :
+	Data is stored with metadata and a unique identifier
+	There is no organization to the objects
+	Scalability is limitless
+	Accessed with HTTP calls
+	Amazon S3 is an example
+	
+
+Docker uses storage driver to manage the contents of the image laymers and the writable container layer. 
+Each storage driver handles the implementation differently, but all drives use stackable image layers and the copy-on-write(COW)strategy
+
+
+                                             Image Layers
+						                            Morechanges
+Docker Image		                      	Applications
+Union Filesystem 	                     	Config changes
+						                            Operating system
+						                            Manifest
+						
+							                            Container Layers
+Docker Container		                   Writable Layers
+						                           Image
+						
+https://docs.docker.com/storage/storagedriver/select-storage-driver/
+
+https://docs.docker.com/storage/storagedriver/overlayfs-driver/
