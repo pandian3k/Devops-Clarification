@@ -26,7 +26,31 @@ Object Storage :
 Docker uses storage driver to manage the contents of the image laymers and the writable container layer. 
 Each storage driver handles the implementation differently, but all drives use stackable image layers and the copy-on-write(COW)strategy
 
+https://docs.docker.com/storage/storagedriver/device-mapper-driver/
 
+Storage Driver: 
+STORAGE drivers are sometime known as Graph drivers. the proper storage driver to use often depends on your operating system and other local configuration factors.
+Overlay2: Current ubuntu and Centos/RHEL version
+aufs: ubuntu 14.04 and older
+devicemaper: centos and earlier.
+
+Storage Models: Persistent data can be managed using several storage models.
+Filesystem storage:
+	Data is stored in the form of a  file system.
+	Used by overlay2 and aufs.
+	Efficient use of memory.
+	Inefficient with write-heavy workloads.
+Blockstorage:
+	Storage data in blocks.
+	used by divicemapper.
+	Efficient with write-heavy workloads.
+Object storage:
+	Stores data in an external object-based store.
+	Application must be designed to use object-based storeage.
+	Flexible and scalable.
+
+	
+https://thenewstack.io/methods-dealing-container-storage
                                              Image Layers
 						                            Morechanges
 Docker Image		                      	Applications
