@@ -70,6 +70,143 @@ show database
 
 exit
 -------------------
+https://docs.docker.com/storage/
+https://docs.docker.com/storage/volumes/
+https://docs.docker.com/storage/bind-mounts/
+
+----------------------
+mkdir hippo
+echo "welcome to AZservice" > az.txt 
+
+docker run --ount type=bind,source=/home/centos/hippo,destiation=/root,readonly busybox cat /root/az.txt
+
+docker run -v /home/centos/hippo:/root busybox cat /root/az.txt
+
+--------------------------------------
+
+https://docs.docker.com/storage/
+https://docs.docker.com/storage/volumes/
+https://docs.docker.com/storage/bind-mounts/
+
+success.docker.com
+
+bridge // default nw type
+
+host //  remove the n/w isolation b/w container and host.
+Only ne container (or application on the ost) can use a port at the same time.
+useful for specific applications, such as a management container that you want to run on every host
+
+overlay // connectmultiple docker hosts (and their containers) together and enable swarm
+only available with docker EE and Swarm enabled
+Multihost n/w using vxlan
+
+MACVLAN // assign a MAC address appear host
+Clones host interfaces to create virtual interfaces, available in the container
+Supports connecting to VLANs
+
+NONE // Connects the container to an isolated n/w with only that container on it
+
+Container canot communicate with any other n/w or n/w devices.
+
+DOcker store Third-party network plugin
+INfobox IPAM plugin
+Weave Net
+Contiv Network Plugin
+
+https://www.docker.com/blog/2016/12/understanding-docker-networking-drivers-use-cases
+
+
+docker network create --driver bridge hippo
+
+docker network ls
+
+docker network inspect hippo
+
+docker run -itd --name sample --network hippo alpine ash
+
+docker ps | grep alpine
+
+ctl + p + q  // command to come out from the container without exit
+
+
+docker network create --driver overlay hippo-overlay
+
+docker service create --help
+docker service create --network=hippo-overlay --name=hippo1 --replicas=6 nginx
+
+by default,containers are connected to the bridge network
+by default, containers have outbound network access but no inbound network access
+ports must be published to allow inbound network access
+
+https://docs.docker.com/engine/reference/run/#expose-icoming-ports
+
+docker container run -dit -p 8080:80 nginx
+docker container run -dit -P nginx //   -P publish auto assign port in docker
+
+
+
+HOST PORT PUBLISHING	                                         INGRESS PORT PUBLISHING
+	
+Typically used with global mode                      service	used with replicated mode services
+	
+Used to pblish a single port on each host	            Used to publish a single port across all host that goes to a  pool of containers
+	
+	
+When publishing ports, specify mode=host	              ----------------------------------------------------
+
+
+https://docs.docker.com/engine/swarm/ingress/#bypassing-the-routing-mesh
+
+-----------------------------------
+docker container run -it --dns 192.168.1.254 centos /bin/bash
+
+cat /etc/resolv.conf
+
+suvo vi /etc/docker/daemon.json
+{
+"dns":[192.18.1.254]
+}
+
+sudo systemctl restart docker
+
+cat /etc/resolv.conf
+------------------------------------
+Load Balaincing - EE  http and https
+
+Docker Swarm provieds LB of workloads as they are instantiated
+
+scaling of new workloads is very easy
+
+However swarm hasn't traditionally scaled up or scaled down containers. based on demands.
+
+https://success.docker.com/article/ucp-service-discovery-swarm
+
+https://docs.docker.com/network/network-tutorial-host/
+
+https://docs.docker.com/ee/ucp/ucp-architecture/#ucp-components-in-manager-nodes
+
+https://docs.docker.com/ee/docker-ee-architecture/
+
+https://docs.docker.com/engine/reference/commandline/logs/
+
+---------------------------------------------------------------------------------------
+
+docker volume --help
+
+docker volume create
+
+docker volume ls
+
+docker volume inspect volumename
+
+docker volume rm volumename
+
+docker volume prune  // remove unused volume
+
+docker pull jenkins
+
+dockr run --name demo -v myvolume:/var/jenkins_home -p 8080 -p 50000:50000 jenkins
+
 docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
 
 docker run -d -v /mnt/mysql:/var/lib/mysql --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
@@ -131,21 +268,7 @@ docker exec -it container_id bash
 
 du -shc
 
-docker volume --help
 
-docker volume create
-
-docker volume ls
-
-docker volume inspect volumename
-
-docker volume rm volumename
-
-docker volume prune  // remove unused volume
-
-docker pull jenkins
-
-dockr run --name demo -v myvolume:/var/jenkins_home -p 8080 -p 50000:50000 jenkins
 
 
 docker network ls
