@@ -16,7 +16,6 @@
    16  chmod +x shutdown.sh
    17  echo $PATH
    18  ln -s /opt/apache-tomcat-8.5.37/bin/startup.sh /usr/local/bin/tomcatup
-   19  ln -s /opt/apache-tomcat-8.5.37/bin/shutdown.sh /usr/local/bin/tomcat down
    20  ln -s /opt/apache-tomcat-8.5.37/bin/shutdown.sh /usr/local/bin/tomcatdown
    21  tomcatup
    22  ps -ef | grep tomcat
@@ -25,18 +24,16 @@
    25  ls
    26  cd conf/
    27  ls
-   28  vi server.xml
+   28  vi server.xml   //port number changing
    29  tomcatdown
    30  ps -ef | grep tomcat
    31  tomcatup
    32  ls
-   33  find / -name context.xml
-   34  vi /opt/apache-tomcat-8.5.37/webapps/host-manager/META-INF/context.xml
-   35  vi /opt/apache-tomcat-8.5.37/webapps/manager/META-INF/context.xml
-   36  tomcatup
+   33  find / -name context.xml 
+   34  vi /opt/apache-tomcat-8.5.37/webapps/host-manager/META-INF/context.xml   //  <!--  -->
+   35  vi /opt/apache-tomcat-8.5.37/webapps/manager/META-INF/context.xml        //  <!--  -->
    37  tomcatdown
    38  tomcatup
    39  vi tomcat-users.xml
    40  tomcatdown
    41  tomcatup
-   42  history
