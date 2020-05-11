@@ -137,6 +137,9 @@ to slove the check_http error: "HTTP WARNING: HTTP/1.1 403 Forbidden"
  sudo systemctl restart httpd.service
 
 
+
+ cd /usr/local/nagios/etc/objects/
+
 https://www.digitalocean.com/community/tutorials/how-to-install-nagios-4-and-monitor-your-servers-on-centos-7
 
 https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
