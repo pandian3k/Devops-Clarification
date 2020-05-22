@@ -111,6 +111,9 @@ $ service nagios start
 To check the service is working 
 $ service nagios status
 ---------------------------------------------------------------------------
+After this Open chrome webpage and give the public Ip with /nagios to open the Nagios UI
+
+----------------------------------------------------------------------------------
 Don't forget to install htop to monitor your memory 
 $ apt install htop
 
