@@ -20,6 +20,8 @@ vi /etc/hostname
 bash
 
 You will have to configure it with the user and the group you have created earlier
+$ ls
+$ cd nagios-4.2.0
 $ ./configure --with-nagios-group=nagios --with-command-group=nagcmd
 $ make all
 $ make install
