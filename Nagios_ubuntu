@@ -17,6 +17,7 @@ $ tar -xzf nagios*.tar.gz
 
 hostname nagios-server
 vi /etc/hostname
+	#will have the private IP in this , check it
 bash
 
 You will have to configure it with the user and the group you have created earlier
