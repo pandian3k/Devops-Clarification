@@ -46,7 +46,7 @@ $ make install
 
 You can find the default configuration of Nagios in /usr/local/nagios/. We will configure Nagios and Nagios contact. Edit default nagios configuration with nano
 
-$ nano -c /usr/local/nagios/etc/nagios.cfg
+$ sudo vi /usr/local/nagios/etc/nagios.cfg
 uncomment line 51 for the host monitor configuration.
 Save and exit.
 
