@@ -7,7 +7,7 @@ FROM centos
 
 RUN yum -y install httpd
 
-ADD https://github.com/awspandian/tamanna/archive/demo.zip /var/www/html /var/www/html/code.zip
+ADD https://github.com/awspandian/tamanna/archive/demo.zip /var/www/html/code.zip
 
 CMD apachectl -DFOREGROUND
 
