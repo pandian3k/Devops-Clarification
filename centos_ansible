@@ -2,7 +2,7 @@ Control machine
 *************** sudo su #to go into root directory
 useradd ansible
 passwd ansible
-visudo
+visudo                  #has administrator rights
 ansible ALL=(ALL)       NOPASSWD: ALL
 su - ansible
 
