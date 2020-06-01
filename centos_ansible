@@ -1,5 +1,5 @@
 Control machine
-***************
+*************** sudo su #to go into root directory
 useradd ansible
 passwd ansible
 visudo
