@@ -1,0 +1,117 @@
+
+---
+- name: setup tomcat
+  hosts: ungrouped
+  become: true
+  user: ansible
+  tasks:
+    - name: install java
+      yum:
+        name: java
+        state: installed
+      when: ansible_os_family == "RedHat"
+    - name: install java on ubuntu
+      apt:
+        name: default-jdk
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: download tomcat
+      get_url:
+        url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.56/bin/apache-tomcat-8.5.56.tar.gz
+        dest: /opt
+    - name: untar tom package
+      unarchive:
+        src: /opt/apache-tomcat-8.5.56.tar.gz
+        dest: /opt
+        remote_src: yes
+    - name: add execution permisons on startuo.sh
+      file:
+        path: /opt/apache-tomcat-8.5.56/bin/startup.sh
+        mode: 0777
+    - name: start tomcat servie
+      shell: nohup ./startup.sh
+      args:
+        chdir: /opt/apache-tomcat-8.5.56/bin
+
+
+---
+- name: installing httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: installing httpd package
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+  - name: Start Apache
+    service:
+      name: httpd
+      state: started
+    when: ansible_os_family == "RedHat"
+  - name: Copy index.html
+    copy:
+      src: /opt/index.html
+      dest: /var/www/html
+      mode: 0666
+
+
+---
+- name: installing httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: installing httpd package
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+    tags: install_apache
+    
+    
+    
+    
+   -----------------------------------------------
+   
+ ---
+- name: this playbook install httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: installing httpd package
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+    notify: start apache
+  - name: Copy index.html
+    copy:
+      src: /opt/index.html
+      dest: /var/www/html
+      mode: 0666
+  - name: Ensure the default Apache port is 8081
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^Listen '
+      insertafter: '^#Listen '
+      line: Listen 8081
+  handlers:
+    - name: start apache
+      service:
+        name: httpd
+        state: started
+      when: ansible_os_family == "RedHat"
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+      when: ansible_os_family == "RedHat"
+
+
+---
+- name: this playbook install httpd
+  hosts: all
+  become: true
+  roles:
+    -  setup-apache
