@@ -2,16 +2,25 @@ yum update
 sudo su -
 
 --------------open jdk-------------------------------
-1 yum install java-11-openjdk java-11-openjdk-devel
-# export JAVA_HOME=$(dirname $(dirname $(readlink $(readlink $(which javac)))))
-export PATH=\$PATH:\$JAVA_HOME/bin
-export CLASSPATH=.:\$JAVA_HOME/jre/lib:\$JAVA_HOME/lib:\$JAVA_HOME/lib/tools.jar
-EOF
+cd /opt/
+wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "https://download.oracle.com/otn-pub/java/jdk/8u231-b11/5b13a193868b4bf28bcb45c792fce896/jdk-8u231-linux-x64.tar.gz"
+tar xzf jdk*
 
-chmod +x /etc/profile.d/java11.sh
---------------jenkins-------------------------------
-  3  source /etc/profile.d/java11.sh
+cd jdk*/
+alternatives --install /usr/bin/java java /opt/jdk*/bin/java 2
+alternatives --config java
+
+vi /etc/profile.d/java.sh
+
+export JAVA_HOME=/opt/jdk1.8.0_231
+export JRE_HOME=/opt/jdk1.8.0_231/jre
+export PATH=$PATH:/opt/jdk1.8.0_231/bin:/opt/jdk1.8.0_231/jre/bin
+
+chmod +x /etc/profile.d/java.sh
+
+  3  source /etc/profile.d/java.sh
     4  java --version
+--------------jenkins-------------------------------
     5  yum install wget git -y
     6  wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat/jenkins.repo
     7  rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
@@ -39,15 +48,17 @@ export JAVA_HOME; $M2_HOME/bin/mvn
    20  ls
    21  tar -xvf apache-tomcat-8.5.46.tar.gz
    22  ls
-   23  cd apache-tomcat-8.5.46
+       mv apache-tomcat-8.5.46 apache-tomcat
+       sudo chown centos:centos -R apache-tomcat
+   23  cd apache-tomcat
    24  ls
    25  cd bin/
    26  ls
    27  ll
    28  chmod +x shutdown.sh startup.sh
    29  ll
-   30  ln -s /opt/apache-tomcat-8.5.46/bin/startup.sh /usr/local/bin/tomcatup
-   31  ln -s /opt/apache-tomcat-8.5.46/bin/shutdown.sh /usr/local/bin/tomcatdown
+   30  ln -s /opt/apache-tomcat/bin/startup.sh /usr/local/bin/tomcatup
+   31  ln -s /opt/apache-tomcat/bin/shutdown.sh /usr/local/bin/tomcatdown
    32  tomcatup
    33  cd ..
    34  cd conf/

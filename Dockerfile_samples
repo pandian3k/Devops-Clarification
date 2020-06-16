@@ -1,0 +1,287 @@
+FROM nginx:alpine
+
+RUN echo "Welcome to Hippo" >  /usr/share/nginx/html/index.html
+
+---------------------------------
+FROM centos
+
+RUN yum -y install httpd
+
+ADD https://github.com/awspandian/tamanna/archive/demo.zip /var/www/html /var/www/html/code.zip
+
+CMD apachectl -DFOREGROUND
+
+
+-----------------------------------------
+FROM centos
+
+RUN yum -y install httpd unzip
+
+ADD  https://github.com/awspandian/tamanna/archive/demo.zip /var/www/html/code.zip
+
+RUN cd /var/www/html/ && unzip code.zip && mv /var/www/html/tamanna-demo/* /var/www/html
+
+CMD apachectl -DFOREGROUND
+-------------------------------------
+
+FROM centos
+
+RUN yum -y install httpd unzip
+
+ENV HTML tamanna
+
+ADD  https://github.com/awspandian/$HTML/archive/demo.zip /var/www/html/code.zip
+
+RUN cd /var/www/html/ && unzip code.zip && mv /var/www/html/$HTML-demo/* /var/www/html && echo $HTML > /var/www/html/env.html
+
+CMD apachectl -DFOREGROUND
+
+docker run -d --name sample -p 9090:80 test
+
+-----------------------------------------
+FROM centos
+
+RUN yum -y install httpd unzip
+
+ENV HTML tamanna
+
+WORKDIR /var/www/html
+
+ADD  https://github.com/awspandian/$HTML/archive/demo.zip ./code.zip
+
+RUN unzip code.zip && mv $HTML-demo/* . && echo $HTML > ./env.html
+
+CMD apachectl -DFOREGROUND
+
+docker run -d --name sample -p 9090:80 test
+
+-----------------------------------------
+FROM centos
+
+RUN yum -y install httpd unzip
+
+LABEL maintainer=Pandian
+LABEL vendor=A2ZCS
+
+ENV HTML tamanna
+
+WORKDIR /var/www/html
+
+ADD  https://github.com/awspandian/$HTML/archive/demo.zip ./code.zip
+
+RUN unzip code.zip && mv $HTML-demo/* . && echo $HTML > ./env.html
+
+CMD apachectl -DFOREGROUND
+-------------------------------------------------
+
+FROM centos
+
+RUN yum -y install httpd unzip
+
+LABEL maintainer=Pandian
+LABEL vendor=A2ZCS
+
+ENV HTML tamanna
+
+WORKDIR /var/www/html
+
+ADD  https://github.com/awspandian/$HTML/archive/demo.zip ./code.zip
+
+RUN unzip code.zip && mv $HTML-demo/* . && echo $HTML > ./env.html
+
+RUN useradd application && chown application:application /var/www/html -R
+
+USER application
+
+RUN rm -rf code.zip $HTML-demo/
+
+USER root
+
+CMD apachectl -DFOREGROUND
+--------------------------------------------------------
+FROM centos
+
+ARG user=application
+
+RUN yum -y install httpd unzip
+
+LABEL maintainer=Pandian
+LABEL vendor=A2ZCS
+
+ENV HTML tamanna
+
+WORKDIR /var/www/html
+
+ADD  https://github.com/awspandian/$HTML/archive/demo.zip ./code.zip
+
+RUN unzip code.zip && mv $HTML-demo/* . && echo $HTML > ./env.html
+
+RUN useradd $user && chown $user:$user /var/www/html -R
+
+USER $user
+
+RUN rm -rf code.zip $HTML-demo/
+
+USER root
+
+CMD apachectl -DFOREGROUND
+
+
+ docker build -t app:1 -f Dockerdemo --build-arg user=Pandian .
+--------------------------------------------
+vi cmd.sh
+
+#!/bin/bash
+
+echo "Starting httpd..."
+apachectl -DFOREGROUND
+--------------------------------------------------------
+FROM centos
+
+ARG user=application
+
+RUN yum -y install httpd unzip
+
+LABEL maintainer=Pandian
+LABEL vendor=A2ZCS
+
+ENV HTML tamanna
+
+WORKDIR /var/www/html
+
+ADD  https://github.com/awspandian/$HTML/archive/demo.zip ./code.zip
+
+RUN unzip code.zip && mv $HTML-demo/* . && echo $HTML > ./env.html
+
+RUN useradd $user && chown $user:$user /var/www/html -R
+
+USER $user
+
+RUN rm -rf code.zip $HTML-demo/
+
+USER root
+
+COPY cmd.sh /cmd.sh
+
+RUN chmod +x /cmd.sh
+
+CMD /cmd.sh
+
+-----------------------------------------
+
+https://www.cyberciti.biz/faq/how-to-install-and-use-nginx-on-centos-7-rhel-7/
+
+vi nginx.repo
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/mainline/centos/7/$basearch/
+gpgchk=0
+enable=1
+-----------------------
+vi nginx.conf
+
+server {
+        listen 80;
+        server_name 13.233.204.167;
+
+        access_log /nginx_php/access.log;
+        error_log  /nginx_php/error.log error;
+
+        root /nginx_php;
+        index index.php index.html;
+
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.php {
+                fastcgi_index index.php;
+                fastcgi_pass 127.0.0.1:9000;
+
+                include fastcgi_params;
+                fastcgi_split_path_info ^(.+\.php)(/.+)$;
+                fastcgi_param PATH_INFO $fastcgi_path_info;
+                fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+                fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        }
+
+        # Prevents caching of css/less/js/images, only use this in development
+        location ~* \.(css|less|js|jpg|png|gif)$ {
+                add_header Cache-Control "no-cache, no-store, must-revalidate";
+                add_header Pragma "no-cache";
+                expires 0;
+        }
+}
+
+
+
+------------------------
+vi start.sh
+
+#!/bin/bash
+
+#Starting php
+echo "***starting php***"
+/usr/sbin/php-fpm
+
+#Starting nginx
+echo "***starting nginx***"
+nginx -g 'daemon off;'
+
+-----------------------
+vi test.php
+
+<?php phpinfo(); ?>
+
+---------------------------------------
+https://dl.iuscommunity.org/pub/ius/stable/Redhat/7/x86_64/
+
+FROM centos:7
+
+COPY conf/nginx.repo /etc/yum.repos.d/nginx.repo
+
+RUN yum install -y nginx && \
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm && \
+    yum install -y \
+      php71u-fpm \
+	  php71u-common \
+	  php71u-cli --enablerepo=ius && yum clean all
+
+RUN mkdir /nginx_php	  
+
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY test.php /nginx_php
+
+COPY conf/start.sh /start.sh
+
+RUN chmod +x /start.sh
+
+CMD /start.sh
+
+-----------------------------------------
+
+FROM centos:7
+
+COPY conf/nginx.repo /etc/yum.repos.d/nginx.repo
+
+RUN yum install -y nginx && \
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm && \
+    yum install -y \
+      php71u-fpm \
+          php71u-common \
+          php71u-cli --enablerepo=ius && yum clean all
+
+RUN mkdir /nginx_php
+
+COPY conf/nginx.conf /etc/nginx/conf.d/default.conf
+
+COPY mod  /nginx_php
+
+COPY conf/start.sh /start.sh
+
+RUN chmod +x /start.sh
+
+CMD /start.sh
+-----------------------------------------------
+   

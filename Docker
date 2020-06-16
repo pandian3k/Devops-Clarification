@@ -28,10 +28,168 @@ docker stats <Container_name>  // to check the cpu and memory utlizying by conta
 docker ps -q | xargs  docker stats --no-stream  // to check the cpu and memory utlizying by all container
 docker run -it --cpus=".5" ubuntu /bin/bash    // to set the cpu size for the contaiiner
 docker container inspect <container-id> |grep -i cpu
-
+docker images -f dangling=true
+docker images -f dangling=true -q
+docker rmi $(docker images -f dangling=true -q)
 docker inspect <container-id>
 
+docker run -d -p 3306:3306 --name sample_mysql -e MYSQL_ROOT_PASSWORD=12345678 mysql:5.7
 
+docker run -d -p 3306:3306 --name sample_mysql -e MYSQL_ROOT_PASSWORD=12345678 -e MYSQL_DATABASE=docker_db -e MYSQL_USER=docker_user -e MYSQL_PASSWORD=1234 mysql:5.7
+
+docker run -d --name postgres -e "POSTGRES_PASSWORD=12345678" -e POSTGRES_USER=docker_user _e POSTGRES_DB=docker_db -p 5432:5432 postgres
+
+docker run --help | grep memory
+docker run --help | grep cpu
+
+docekr run -d --name nginx --memory "200mb" nginx-alphine 
+docekr run -d --name nginx --memory "200mb" --cpuset-cpu 0,1 nginx-alphine 
+
+docker cp index1.html 
+hippo:/usr/local/hippo/htdocs/index.html // this is used to copy files from host machine to container.
+
+
+docker cp hippo:/opt/hippo.txt . // this is used to copy the document from container to host machine.
+
+docker stats nginx
+
+docker run -d --name hippo centos python -m SimpleHTTPServer 8080
+
+docker run -d --name hippo -p 9090:8080 centos python -m SimpleHTTPServer 8080
+
+-----------------------------------
+docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker exec -it containerid bash
+
+mysql -u root -p12345678
+
+show database
+create database test_db;
+show database
+
+exit
+-------------------
+https://docs.docker.com/storage/
+https://docs.docker.com/storage/volumes/
+https://docs.docker.com/storage/bind-mounts/
+
+----------------------
+mkdir hippo
+echo "welcome to AZservice" > az.txt 
+
+docker run --ount type=bind,source=/home/centos/hippo,destiation=/root,readonly busybox cat /root/az.txt
+
+docker run -v /home/centos/hippo:/root busybox cat /root/az.txt
+
+--------------------------------------
+
+https://docs.docker.com/storage/
+https://docs.docker.com/storage/volumes/
+https://docs.docker.com/storage/bind-mounts/
+
+success.docker.com
+
+bridge // default nw type
+
+host //  remove the n/w isolation b/w container and host.
+Only ne container (or application on the ost) can use a port at the same time.
+useful for specific applications, such as a management container that you want to run on every host
+
+overlay // connectmultiple docker hosts (and their containers) together and enable swarm
+only available with docker EE and Swarm enabled
+Multihost n/w using vxlan
+
+MACVLAN // assign a MAC address appear host
+Clones host interfaces to create virtual interfaces, available in the container
+Supports connecting to VLANs
+
+NONE // Connects the container to an isolated n/w with only that container on it
+
+Container canot communicate with any other n/w or n/w devices.
+
+DOcker store Third-party network plugin
+INfobox IPAM plugin
+Weave Net
+Contiv Network Plugin
+
+https://www.docker.com/blog/2016/12/understanding-docker-networking-drivers-use-cases
+
+
+docker network create --driver bridge hippo
+
+docker network ls
+
+docker network inspect hippo
+
+docker run -itd --name sample --network hippo alpine ash
+
+docker ps | grep alpine
+
+ctl + p + q  // command to come out from the container without exit
+
+
+docker network create --driver overlay hippo-overlay
+
+docker service create --help
+docker service create --network=hippo-overlay --name=hippo1 --replicas=6 nginx
+
+by default,containers are connected to the bridge network
+by default, containers have outbound network access but no inbound network access
+ports must be published to allow inbound network access
+
+https://docs.docker.com/engine/reference/run/#expose-icoming-ports
+
+docker container run -dit -p 8080:80 nginx
+docker container run -dit -P nginx //   -P publish auto assign port in docker
+
+
+
+HOST PORT PUBLISHING	                                         INGRESS PORT PUBLISHING
+	
+Typically used with global mode                      service	used with replicated mode services
+	
+Used to pblish a single port on each host	            Used to publish a single port across all host that goes to a  pool of containers
+	
+	
+When publishing ports, specify mode=host	              ----------------------------------------------------
+
+
+https://docs.docker.com/engine/swarm/ingress/#bypassing-the-routing-mesh
+
+-----------------------------------
+docker container run -it --dns 192.168.1.254 centos /bin/bash
+
+cat /etc/resolv.conf
+
+suvo vi /etc/docker/daemon.json
+{
+"dns":[192.18.1.254]
+}
+
+sudo systemctl restart docker
+
+cat /etc/resolv.conf
+------------------------------------
+Load Balaincing - EE  http and https
+
+Docker Swarm provieds LB of workloads as they are instantiated
+
+scaling of new workloads is very easy
+
+However swarm hasn't traditionally scaled up or scaled down containers. based on demands.
+
+https://success.docker.com/article/ucp-service-discovery-swarm
+
+https://docs.docker.com/network/network-tutorial-host/
+
+https://docs.docker.com/ee/ucp/ucp-architecture/#ucp-components-in-manager-nodes
+
+https://docs.docker.com/ee/docker-ee-architecture/
+
+https://docs.docker.com/engine/reference/commandline/logs/
+
+---------------------------------------------------------------------------------------
 
 docker volume --help
 
@@ -48,6 +206,69 @@ docker volume prune  // remove unused volume
 docker pull jenkins
 
 dockr run --name demo -v myvolume:/var/jenkins_home -p 8080 -p 50000:50000 jenkins
+
+docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker run -d -v /mnt/mysql:/var/lib/mysql --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker volume create hippo_volume
+docker info | grep root
+cd /mnt/docker/volume
+
+docker run -d -v hippo_volume:/var/lib/mysql --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" mysql:5.7
+
+docker run -d --name mysql -e "MYSQL_ROOT_PASSWORD=12345678" -v var/lib/mysql mysql:5.7 
+
+docker rm -fv mysql
+
+ip a | grep docker
+
+docker network ls
+
+docker exec container_name bash -c "ping ip od second_container"
+
+docker network inspect bridge
+docker network create --help
+docker network create -d bridge --subbnet  172.18.0.0/16 --gateway 172.18.0.1 hippo_network
+
+docker network rm hippo_network
+
+docker run -d --network hippo_network --name sample centos 
+
+docker network inspect hippo_network
+
+docker network connect // used to communicate between different network
+
+docker network create -d bridge --subnet 172.20.0.0/16 --gateway 172.20.0.1 hippo1
+docker network create -d bridge --subnet 172.30.0.0/16 --gateway 172.30.0.1 hippo2
+
+docker run -itd --name hippo1_cont --network hippo1 centos
+docker run -itd --name hippo2_cont --network hippo2 centos
+
+docker exec hippo1_cont bash -c "ping hippo2_cont"
+ 
+
+docker network connect hippo1 hippo2_cont  // after this we can ping different network
+
+docker exec hippo1_cont bash -c "ping hippo2_cont"
+
+docker network disconnect hippo1 hippo2_cont
+
+docker run -itd --network htippo1 --ip 172.20.0.150 --name sample centos  // assign IP to a container
+
+
+docker run -it --network host centos bash
+hostname  // get same linke ec2
+
+
+
+
+docker run -dit --network none centos
+docker exec -it container_id bash
+
+du -shc
+
+
 
 
 docker network ls

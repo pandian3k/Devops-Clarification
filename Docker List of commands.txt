@@ -43,6 +43,27 @@ docker stop web
  docker inspect 3a90851c8359
  elinks 172.31.18.20:32769
 
+netstat --listen  // to check which ports are in listening in linux server
+
+lsof // list of file, we can know  which file is opend by which process
+
+systemctl status // to check status of the service
+
+ps -ef | grep httpd // to check process
+
+top // list the running process and how much cpu and memory are using
+
+df  // display free disk space we can use df command to troubleshoot disk space issues.
+
+df -h // free space on mounted file systems.
+
+fdisk -l // disk partitions sizes and types
+
+free -h // summary of the memory usage with our computer including RAM and swap memory.
+
+kill // terminate a process 
+
+grep "model name" /proc/cpuinfo  // get the cpu
 
 
 docker history --no-trunc <Image ID>   // Then find the its layers and their sizes

@@ -137,8 +137,75 @@ to slove the check_http error: "HTTP WARNING: HTTP/1.1 403 Forbidden"
  sudo systemctl restart httpd.service
 
 
+
+ cd /usr/local/nagios/etc/objects/
+ 
+ /usr/local/nagios/bin/nagios -v /usr/local/nagios/etc/nagios.cfg
+
+
+
 https://www.digitalocean.com/community/tutorials/how-to-install-nagios-4-and-monitor-your-servers-on-centos-7
 
 https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
 https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/configmain.html#check_external_commands
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	#Nagios
+Binary: /usr/local/nagios/bin/nagios
+Config: /usr/local/nagios/etc/nagios.cfg
+plugins: /usr/local/nagios/libexec
+
+	#NRPE
+Binary: /usr/local/nagios/bin/nrpe
+Config: /usr/local/nagios/etc/nrpe.cfg
+plugins: /usr/local/nagios/libexec
+
+	#NSCA
+Binary: /usr/local/nagios/bin/nsca
+Config: /usr/local/nagios/etc/nsca.cfg
+
+	#Web
+Binary: /usr/local/nagios/share
+Config: /usr/local/nagios/etc/cgi.cfg
+
+	#WEB SERVER
+Binary: /usr/sbin/httpd
+Config: /etc/httpd/conf/httpd.conf
+Config: /etc/httpd/conf.d/nagios.cfg
+Database: /usr/local/nagios/etc
