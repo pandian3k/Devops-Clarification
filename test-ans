@@ -1,0 +1,203 @@
+sudo vim /etc/selinux/config
+
+SELINUX=disable
+
+sudo setenforce 0
+
+ansible ADHOC 
+	
+ansible -m command -a "uptime" testing
+
+ansible -m copy -a "src=/etc/hosts dest=/tem/hosts" testing
+
+ansible -m copy -a "src=/etc/hosts dest=/tem/hosts" testing --become -K
+(-K for password, -b for become ,--become for root, -a for attributes, -m for module, testing for groupname, -i for inventory, -C for Dry run ) 
+
+ansible -m file -a "dest=/tmp/osts_testing mode=777 owner=username" --become -K testing
+
+ansible -m command -a "ifconfig" testing --become -K
+
+ansible all -b -m service -a "name=auditd state=started enabled=yes"
+
+http://yaml-online-parser.appspot.com/
+
+ansible testing -m setup
+ansible testing -m setup | more
+ansible all -m file -a 'path=/tmp/test state=touch'
+ansible all -m file -a 'path=/tmp/test state=touch mode=600'
+Green		=		success
+yellow		=		success with changes
+red			=		Failure
+
+ansible  all -m copy -a "remote_src=yes src=/tmp/abc dest=/tem/xyz" 
+
+ansible all -m command -a 'hostname' -o
+ansible all -a 'hostname' -o
+ansible all -a 'id'
+ansible all -a 'touch /tmp/123_copy_module creates=/tmp/123_copy_module'
+ansible all 'rm /tmp/123_copy_module remove=/tmp/123_copy_module'
+
+ansible-doc file
+
+ansible-playbook --syntax-check motd_playbook.yml
+ansible-playbook --step motd_playbook.yml
+ansible-playbook motd_playbook.yml -e 'motd="Testing the motd playbook\n"'
+ansible-playbook motd_playbook.yml --extra-vars='motd="Testing the motd playbook\n"'
+
+ansible all -i centos2, -m setup | more
+
+ansible all -i centos2,ubuntu, -m setup | grep ansible_distributtion
+
+
+Modules:
+Core Modules Extra Modules and Custom Modules
+Core Modules are included with Ansible and are written and manitained by the Ansible developent team. Core Modules are the most important modules and are used for common administration tasks.
+Extra Modules are currently with Ansible but may be promoted to core or shipped separately in the future. They are generally not maintained by the Ansible team but by the community. Typically these modules implement features for managin newer techonologies such as OpenStack.
+Custom Modules are modules devloped by the end users and not shipped by Ansible. If a modules does not already exist for a task, an administrator can write a new module to implement it.
+
+ansible-doc -l to list all the available modules
+   
+ ansible dev -m setup  #facts
+
+ansible-playbook user-c.ymls -e "user=radha"
+
+anisble-galaxy init /etc/ansible/role/apache --offline
+
+---
+# YAML documents begin with the document separator ---
+
+# The minus in YAML this indicates a list item.  The playbook contains a list 
+# of plays, with each play being a dictionary
+-
+
+  # Target: where our play will run and options it will run with
+
+  # Variable: variables that will apply to the play, on all target systems
+
+  # Task: the list of tasks that will be executed within the play, this section
+  # can also be used for pre and post tasks
+
+  # Handlers: handlers that are executed as a notify key from a task
+
+  # Roles: list of roles to be imported into the play
+
+# Three dots indicate the end of a YAML document
+...
+
+-----------------------------------------------------------------------
+---
+- name: setup tomcat
+  hosts: ungrouped
+  become: true
+  user: ansible
+  tasks:
+    - name: install java
+      yum:
+        name: java
+        state: installed
+      when: ansible_os_family == "RedHat"
+    - name: install java on ubuntu
+      apt:
+        name: default-jdk
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: download tomcat
+      get_url:
+        url: https://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.56/bin/apache-tomcat-8.5.56.tar.gz
+        dest: /opt
+    - name: untar tom package
+      unarchive:
+        src: /opt/apache-tomcat-8.5.56.tar.gz
+        dest: /opt
+        remote_src: yes
+    - name: add execution permisons on startuo.sh
+      file:
+        path: /opt/apache-tomcat-8.5.56/bin/startup.sh
+        mode: 0777
+    - name: start tomcat servie
+      shell: nohup ./startup.sh
+      args:
+        chdir: /opt/apache-tomcat-8.5.56/bin
+
+
+---
+- name: installing httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: installing httpd package
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+  - name: Start Apache
+    service:
+      name: httpd
+      state: started
+    when: ansible_os_family == "RedHat"
+  - name: Copy index.html
+    copy:
+      src: /opt/index.html
+      dest: /var/www/html
+      mode: 0666
+
+
+---
+- name: installing httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: installing httpd package
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+    tags: install_apache
+    
+    
+    
+    
+   -----------------------------------------------
+   
+ ---
+- name: this playbook install httpd
+  hosts: all
+  become: true
+  tasks:
+  - name: installing httpd package
+    yum:
+      name: httpd
+      state: installed
+    when: ansible_os_family == "RedHat"
+    notify: start apache
+  - name: Copy index.html
+    copy:
+      src: /opt/index.html
+      dest: /var/www/html
+      mode: 0666
+  - name: Ensure the default Apache port is 8081
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^Listen '
+      insertafter: '^#Listen '
+      line: Listen 8081
+  handlers:
+    - name: start apache
+      service:
+        name: httpd
+        state: started
+      when: ansible_os_family == "RedHat"
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
+      when: ansible_os_family == "RedHat"
+
+
+---
+- name: this playbook install httpd
+  hosts: all
+  become: true
+  roles:
+    -  setup-apache
